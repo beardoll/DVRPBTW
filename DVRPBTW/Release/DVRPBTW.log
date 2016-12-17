@@ -1,0 +1,30 @@
+﻿生成启动时间为 2016/12/15 20:50:43。
+     1>项目“C:\Users\cfinsbear\Documents\DVRPBTW\DVRPBTW\DVRPBTW.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         D:\visual studio 2012\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Car.cpp LoadFile.cpp main.cpp Route.cpp Algorithm.cpp tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp
+         Car.cpp
+         LoadFile.cpp
+         main.cpp
+         Route.cpp
+         Algorithm.cpp
+         tinystr.cpp
+         tinyxml.cpp
+         tinyxmlerror.cpp
+         tinyxmlparser.cpp
+       Link:
+         D:\visual studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\cfinsbear\Documents\DVRPBTW\Release\DVRPBTW.exe" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\cfinsbear\Documents\DVRPBTW\Release\DVRPBTW.pdb" /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\cfinsbear\Documents\DVRPBTW\Release\DVRPBTW.lib" /MACHINE:X86 /SAFESEH Release\Car.obj
+         Release\LoadFile.obj
+         Release\main.obj
+         Release\Route.obj
+         Release\Algorithm.obj
+         Release\tinystr.obj
+         Release\tinyxml.obj
+         Release\tinyxmlerror.obj
+         Release\tinyxmlparser.obj
+     1>Algorithm.obj : error LNK2001: 无法解析的外部符号 "public: unsigned int __thiscall Algorithm::codeForSolution(class std::vector<class Car *,class std::allocator<class Car *> >)" (?codeForSolution@Algorithm@@QAEIV?$vector@PAVCar@@V?$allocator@PAVCar@@@std@@@std@@@Z)
+     1>C:\Users\cfinsbear\Documents\DVRPBTW\Release\DVRPBTW.exe : fatal error LNK1120: 1 个无法解析的外部命令
+     1>已完成生成项目“C:\Users\cfinsbear\Documents\DVRPBTW\DVRPBTW\DVRPBTW.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:02.84

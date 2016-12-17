@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<testinstance>
+	<nodeset>
+		<node id="0" type="D">
+			<cx>0</cx> 
+			<cy>0</cy>
+			<start>0</start>
+			<end>0</end>
+			<service>0</service>
+			<quantity>0</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="1" type="L">
+			<cx>1</cx> 
+			<cy>0</cy>
+			<start>1</start>
+			<end>2</end>
+			<service>0</service>
+			<quantity>1</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="2" type="L">
+			<cx>3</cx> 
+			<cy>0</cy>
+			<start>2</start>
+			<end>5</end>
+			<service>0</service>
+			<quantity>2</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="3" type="L">
+			<cx>5</cx> 
+			<cy>0</cy>
+			<start>4</start>
+			<end>6</end>
+			<service>0</service>
+			<quantity>1</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="4" type="B">
+			<cx>7</cx> 
+			<cy>0</cy>
+			<start>6</start>
+			<end>9</end>
+			<service>0</service>
+			<quantity>3</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="5" type="B">
+			<cx>8</cx> 
+			<cy>0</cy>
+			<start>6</start>
+			<end>10</end>
+			<service>0</service>
+			<quantity>1</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="6" type="L">
+			<cx>1.5</cx> 
+			<cy>0</cy>
+			<start>1</start>
+			<end>2</end>
+			<service>0</service>
+			<quantity>2</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="7" type="L">
+			<cx>3</cx> 
+			<cy>0</cy>
+			<start>2</start>
+			<end>4</end>
+			<service>0</service>
+			<quantity>3</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="8" type="L">
+			<cx>4.5</cx> 
+			<cy>0</cy>
+			<start>3</start>
+			<end>6</end>
+			<service>0</service>
+			<quantity>2</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="9" type="L">
+			<cx>6</cx> 
+			<cy>0</cy>
+			<start>5</start>
+			<end>7</end>
+			<service>0</service>
+			<quantity>1</quantity>
+			<arrive>0</arrive>
+		</node>
+		<node id="10" type="B">
+			<cx>8</cx> 
+			<cy>0</cy>
+			<start>6</start>
+			<end>10</end>
+			<service>0</service>
+			<quantity>1</quantity>
+			<arrive>0</arrive>
+		</node>
+	</nodeset>
+</testinstance>
