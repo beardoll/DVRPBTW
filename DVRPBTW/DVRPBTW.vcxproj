@@ -82,6 +82,7 @@
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="LoadFile.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="OutputFile.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="Algorithm.cpp" />
     <ClCompile Include="tinystr.cpp" />

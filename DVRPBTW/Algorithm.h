@@ -14,7 +14,7 @@ public:
 	void regretInsert(vector<Car*> &removedCarSet, vector<Customer*> removedCustomer, float noiseAmount, bool noiseAdd);
 	void reallocateCarIndex(vector<Car*> &originCarSet); // 重新编号车辆
 	void removeNullRoute(vector<Car*> &originCarSet);    // 清除空车辆 
-	void run(vector<Car*> &finalCarSet, float finalCost);  // 运行算法，相当于算法的main()函数
+	void run(vector<Car*> &finalCarSet, float &finalCost);  // 运行算法，相当于算法的main()函数
 private:
 	vector<Customer*> allCustomer;
 	Customer depot;

@@ -89,5 +89,8 @@
     <ClCompile Include="tinyxmlparser.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="OutputFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

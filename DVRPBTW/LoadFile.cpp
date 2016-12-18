@@ -5,12 +5,12 @@
 bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &capacity){
 	// 读取xml内容于allCustomers, depot, capacity中
 	string file = filePath + fileName;   // 文件路径+文件名
-	TiXmlDocument doc(file.c_str());    // 读入XML文件
-    if(!doc.LoadFile()) return false;  // 如果无法读取文件，则返回
-    TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
-    TiXmlElement* pElem;            // 指向元素的指针
-    pElem = hDoc.FirstChildElement().Element(); //指向根节点
-    TiXmlHandle hRoot(pElem);       // hRoot是根节点
+	TiXmlDocument doc(file.c_str());     // 读入XML文件
+	if(!doc.LoadFile()) return false;    // 如果无法读取文件，则返回
+	TiXmlHandle hDoc(&doc);         // hDoc是&doc指向的对象
+	TiXmlElement* pElem;            // 指向元素的指针
+	pElem = hDoc.FirstChildElement().Element(); //指向根节点
+	TiXmlHandle hRoot(pElem);       // hRoot是根节点
 	Customer* customer;
 	int tempINT;
 	float tempFLOAT;
@@ -19,10 +19,10 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
     TiXmlElement* nodeElem = hRoot.FirstChild("network").FirstChild("nodes").FirstChild("node").Element(); //当前指向了node节点
     for(nodeElem; nodeElem; nodeElem = nodeElem->NextSiblingElement()) { // 挨个读取node节点的信息
 		customer = new Customer;
-        TiXmlHandle node(nodeElem);  // nodeElem所指向的节点
-        TiXmlElement* xElem = node.FirstChild("cx").Element();  // cx节点
-        TiXmlElement* yElem = node.FirstChild("cy").Element();  // cy节点
-        nodeElem->QueryIntAttribute("id", &tempINT);  //把id放到temp1中，属性值读法
+		TiXmlHandle node(nodeElem);  // nodeElem所指向的节点
+		TiXmlElement* xElem = node.FirstChild("cx").Element();  // cx节点
+		TiXmlElement* yElem = node.FirstChild("cy").Element();  // cy节点
+		nodeElem->QueryIntAttribute("id", &tempINT);  //把id放到temp1中，属性值读法
 		if(tempINT == 0){  // depot节点
 			depot.id = tempINT;
 			tempFLOAT = (float)atof(xElem->GetText());    // char转float
@@ -58,13 +58,13 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
         // 分别读取各项数据
         tempFLOAT = (float)atof(startTimeElem->GetText());
 		customer->startTime = tempFLOAT;  
-        tempFLOAT = (float)atof(endTimeElem->GetText());
+		tempFLOAT = (float)atof(endTimeElem->GetText());
 		customer->endTime = tempFLOAT;
-        tempFLOAT = (float)atof(quantityElem->GetText());
+		tempFLOAT = (float)atof(quantityElem->GetText());
 		customer->quantity = tempFLOAT;
-        tempFLOAT = (float)atof(serviceTimeElem->GetText());
+		tempFLOAT = (float)atof(serviceTimeElem->GetText());
 		customer->serviceTime = tempFLOAT;
-        count++;
+		count++;
     }
 
 	// 读取capacity

@@ -117,7 +117,7 @@ void Algorithm::shawRemoval(vector<Car*> &originCarSet, vector<Customer*> &remov
 	vector<pair<float, int>> R(customerAmount*customerAmount);     // œ‡À∆æÿ’Û
 	float temp1;
 	vector<int> allIndex(customerAmount);  // 0~customerAmount-1
-	for(i=0; i<originCarSet.size(); i++){
+	for(i=0; i<(int)originCarSet.size(); i++){
 		originCarSet[i]->getRoute().refreshArrivedTime();
 	}
 	for(i=0; i<customerAmount; i++){
@@ -544,7 +544,7 @@ bool carSetEqual(vector<Car*> carSet1, vector<Car*> carSet2){
 		vector<Customer*> cust1 = carSet1[i]->getRoute().getAllCustomer();
 		vector<Customer*> cust2 = carSet2[i]->getRoute().getAllCustomer();
 		if(cust1.size() != cust2.size()) {mark = false; break;}
-		for(int j=0; j<cust1.size(); j++) {
+		for(int j=0; j<(int)cust1.size(); j++) {
 			if(cust1[j]->id != cust2[j]->id) {mark = false; break;}
 		}
 	}
@@ -554,14 +554,14 @@ bool carSetEqual(vector<Car*> carSet1, vector<Car*> carSet2){
 bool customerSetEqual(vector<Customer*>c1, vector<Customer*>c2){
 	if(c1.size() != c2.size()) {return false;}
 	bool mark = true;
-	for(int i=0; i<c1.size(); i++) {
+	for(int i=0; i<(int)c1.size(); i++) {
 		if(c1[i]->id != c2[i]->id) {mark = false; break;}
 	}
 	return mark;
 
 }
 
-void Algorithm::run(vector<Car*> &finalCarSet, float finalCost){  // ‘À––À„∑®£¨œ‡µ±”⁄À„∑®µƒmain()∫Ø ˝
+void Algorithm::run(vector<Car*> &finalCarSet, float &finalCost){  // ‘À––À„∑®£¨œ‡µ±”⁄À„∑®µƒmain()∫Ø ˝
 	int i;
 	int customerAmount = allCustomer.size();
 	vector<Car*> currentCarSet(0);
@@ -630,7 +630,6 @@ void Algorithm::run(vector<Car*> &finalCarSet, float finalCost){  // ‘À––À„∑®£¨œ
 	float c = 0.9998f;    // ΩµŒ¬ÀŸ¬ 
 	srand(unsigned(time(0)));
 	vector<Customer*> removedCustomer(0);    // ±ª“∆≥˝µƒΩ⁄µ„
-	vector<Customer*> trc(0);
 	vector<Car*> tempCarSet(0);      // ‘› ±¥Ê∑≈µ±«∞Ω‚
 	for(i=0; i<(int)currentCarSet.size();i++){
 		Car* newCar = new Car(*currentCarSet[i]);
@@ -732,7 +731,6 @@ void Algorithm::run(vector<Car*> &finalCarSet, float finalCost){  // ‘À––À„∑®£¨œ
 			}
 		}
 		// ÷¥––insert heuristic
-		if(customerSetEqual(removedCustomer, trc) == true) {cout << "fuck your mother!" << endl;}
 		switch(insertIndex) {
 		case 0:
 			{
@@ -744,9 +742,6 @@ void Algorithm::run(vector<Car*> &finalCarSet, float finalCost){  // ‘À––À„∑®£¨œ
 				regretInsert(tempCarSet, removedCustomer, noiseAmount, noiseAdd);
 				break;
 			}
-		}
-		for(i=0; i<trc.size(); i++) {
-			delete trc[i];
 		}
 		assert(getCustomerNum(tempCarSet) == customerAmount);
 		// “∆≥˝ø’¬∑æ∂
@@ -821,7 +816,9 @@ void Algorithm::run(vector<Car*> &finalCarSet, float finalCost){  // ‘À––À„∑®£¨œ
 			}
 		}
 	}
-	finalCarSet = globalCarSet;
+	finalCarSet.clear();
+	finalCarSet.resize(globalCarSet.size());
+	copy(globalCarSet.begin(), globalCarSet.end(), finalCarSet.begin());   // ’‚¿ÔΩ¯––«≥∏¥÷∆æÕø…“‘¡À
 	finalCost = globalCost;
 }
 

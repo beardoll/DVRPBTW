@@ -426,7 +426,6 @@ void Route::computeInsertCost(Customer item, float &minValue, Customer &customer
 							customer2 = customer1;
 							minValue = temp;
 							customer1 = *pre;
-							int aa = 0;
 						}
 					}
 				}

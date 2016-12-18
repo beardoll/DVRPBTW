@@ -1,35 +1,22 @@
-﻿生成启动时间为 2016/12/17 22:26:51。
+﻿生成启动时间为 2016/12/18 22:14:25。
      1>项目“C:\Users\cfinsbear\Documents\DVRPBTW\DVRPBTW\DVRPBTW.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\visual studio 2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Algorithm.cpp Car.cpp LoadFile.cpp Route.cpp main.cpp tinystr.cpp tinyxml.cpp tinyxmlerror.cpp tinyxmlparser.cpp
-         tinyxmlparser.cpp
-         tinyxmlerror.cpp
-         tinyxml.cpp
-         tinystr.cpp
-         main.cpp
-         Route.cpp
-         LoadFile.cpp
-         Car.cpp
+         D:\visual studio 2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Algorithm.cpp
          Algorithm.cpp
-     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\algorithm.cpp(120): warning C4018: “<”: 有符号/无符号不匹配
-     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\algorithm.cpp(547): warning C4018: “<”: 有符号/无符号不匹配
-     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\algorithm.cpp(557): warning C4018: “<”: 有符号/无符号不匹配
-     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\algorithm.cpp(748): warning C4018: “<”: 有符号/无符号不匹配
-         正在生成代码...
        Link:
          D:\visual studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.lib" /MACHINE:X86 Debug\Car.obj
          Debug\LoadFile.obj
          Debug\main.obj
+         Debug\OutputFile.obj
          Debug\Route.obj
          Debug\Algorithm.obj
          Debug\tinystr.obj
          Debug\tinyxml.obj
          Debug\tinyxmlerror.obj
          Debug\tinyxmlparser.obj
-         LINK : 没有找到 C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.exe 或上一个增量链接没有生成它；正在执行完全链接
          DVRPBTW.vcxproj -> C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.exe
      1>已完成生成项目“C:\Users\cfinsbear\Documents\DVRPBTW\DVRPBTW\DVRPBTW.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:03.91
+已用时间 00:00:02.19
