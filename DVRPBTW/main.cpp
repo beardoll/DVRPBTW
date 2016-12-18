@@ -9,7 +9,7 @@
 using namespace std;
 
 static const string FILE_PATH = "C:/Users/cfinsbear/Documents/DVRPBTW/DVRPBTW/solomon-1987-rc1/";
-static const string FILE_NAME = "RC102_100.xml";
+static const string FILE_NAME = "RC103_100.xml";
 static const int NUM_OF_CUSTOMER = 100;
 
 int main(){
