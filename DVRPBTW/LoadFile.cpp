@@ -56,7 +56,7 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
         TiXmlElement* quantityElem = request.FirstChild("quantity").Element();                // quantity
         TiXmlElement* serviceTimeElem = request.FirstChild("service_time").Element();         // service time
         // 分别读取各项数据
-        tempFLOAT = (float)atof(startTimeElem->GetText());
+		tempFLOAT = (float)atof(startTimeElem->GetText());
 		customer->startTime = tempFLOAT;  
 		tempFLOAT = (float)atof(endTimeElem->GetText());
 		customer->endTime = tempFLOAT;
