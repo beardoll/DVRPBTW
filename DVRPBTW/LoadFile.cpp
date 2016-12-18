@@ -16,8 +16,8 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
 	float tempFLOAT;
 
 	// 读取x,y，它们放在network->nodes->node节点中
-    TiXmlElement* nodeElem = hRoot.FirstChild("network").FirstChild("nodes").FirstChild("node").Element(); //当前指向了node节点
-    for(nodeElem; nodeElem; nodeElem = nodeElem->NextSiblingElement()) { // 挨个读取node节点的信息
+	TiXmlElement* nodeElem = hRoot.FirstChild("network").FirstChild("nodes").FirstChild("node").Element(); //当前指向了node节点
+	for(nodeElem; nodeElem; nodeElem = nodeElem->NextSiblingElement()) { // 挨个读取node节点的信息
 		customer = new Customer;
 		TiXmlHandle node(nodeElem);  // nodeElem所指向的节点
 		TiXmlElement* xElem = node.FirstChild("cx").Element();  // cx节点
