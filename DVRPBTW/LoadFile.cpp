@@ -46,16 +46,16 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
     }
 
 	 // 读取其余信息
-    TiXmlElement* requestElem = hRoot.FirstChild("requests").FirstChild("request").Element(); // 指向了request节点
-    int count = 0;
-    for(requestElem; requestElem; requestElem = requestElem->NextSiblingElement()) {
-        customer = allCustomer[count];     // 当前顾客节点，注意不能赋值给一个新的对象，否则会调用复制构造函数
-        TiXmlHandle request(requestElem);  // 指针指向的对象
-        TiXmlElement* startTimeElem = request.FirstChild("tw").FirstChild("start").Element(); // start time
-        TiXmlElement* endTimeElem = request.FirstChild("tw").FirstChild("end").Element();     // end time
-        TiXmlElement* quantityElem = request.FirstChild("quantity").Element();                // quantity
-        TiXmlElement* serviceTimeElem = request.FirstChild("service_time").Element();         // service time
-        // 分别读取各项数据
+	TiXmlElement* requestElem = hRoot.FirstChild("requests").FirstChild("request").Element(); // 指向了request节点
+	int count = 0;
+	for(requestElem; requestElem; requestElem = requestElem->NextSiblingElement()) {
+		customer = allCustomer[count];     // 当前顾客节点，注意不能赋值给一个新的对象，否则会调用复制构造函数
+		TiXmlHandle request(requestElem);  // 指针指向的对象
+		TiXmlElement* startTimeElem = request.FirstChild("tw").FirstChild("start").Element(); // start time
+		TiXmlElement* endTimeElem = request.FirstChild("tw").FirstChild("end").Element();     // end time
+		TiXmlElement* quantityElem = request.FirstChild("quantity").Element();                // quantity
+		TiXmlElement* serviceTimeElem = request.FirstChild("service_time").Element();         // service time
+		// 分别读取各项数据
 		tempFLOAT = (float)atof(startTimeElem->GetText());
 		customer->startTime = tempFLOAT;  
 		tempFLOAT = (float)atof(endTimeElem->GetText());
