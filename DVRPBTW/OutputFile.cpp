@@ -42,9 +42,18 @@ void OutputFile::exportData(){         // 主函数
 			TiXmlElement *cy = new TiXmlElement("cy");
 			node = new TiXmlElement("Node");
 			node->SetAttribute("id", (*iter2)->id);
-			node->SetAttribute("type", (*iter2)->type);
+			switch((*iter2)->type){   // 属性值是string类型而非ASCII码类型
+			case 'D':
+				node->SetAttribute("type", "D");
+				break;
+			case 'L':
+				node->SetAttribute("type", "L");
+				break;
+			case 'B':
+				node->SetAttribute("type", "B");
+				break;
+			}
 			buffer << (*iter2)->x;
-			ss = buffer.str();
 			cx->LinkEndChild(new TiXmlText(ss.c_str()));
 			buffer.str("");
 			buffer << (*iter2)->y;

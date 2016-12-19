@@ -1,0 +1,567 @@
+<?xml version="1.0" ?>
+<Result>
+    <!--ALNS results for datasetRC105_100.xml-->
+    <RouteSet>
+        <Route index="0">
+            <Node id="0" type="D">
+                <cx></cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="39" type="L">
+                <cx>50</cx>
+                <cy>80</cy>
+            </Node>
+            <Node id="36" type="L">
+                <cx>80</cx>
+                <cy>85</cy>
+            </Node>
+            <Node id="37" type="L">
+                <cx>85</cx>
+                <cy>82</cy>
+            </Node>
+            <Node id="38" type="L">
+                <cx>82</cx>
+                <cy>80</cy>
+            </Node>
+            <Node id="40" type="L">
+                <cx>80</cx>
+                <cy>85</cy>
+            </Node>
+            <Node id="35" type="L">
+                <cx>85</cx>
+                <cy>85</cy>
+            </Node>
+            <Node id="43" type="L">
+                <cx>85</cx>
+                <cy>85</cy>
+            </Node>
+            <Node id="70" type="L">
+                <cx>85</cx>
+                <cy>69</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>69</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="1">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="42" type="L">
+                <cx>50</cx>
+                <cy>80</cy>
+            </Node>
+            <Node id="44" type="L">
+                <cx>80</cx>
+                <cy>82</cy>
+            </Node>
+            <Node id="41" type="L">
+                <cx>82</cx>
+                <cy>75</cy>
+            </Node>
+            <Node id="72" type="L">
+                <cx>75</cx>
+                <cy>65</cy>
+            </Node>
+            <Node id="54" type="L">
+                <cx>65</cx>
+                <cy>60</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>60</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="2">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="92" type="L">
+                <cx>50</cx>
+                <cy>43</cy>
+            </Node>
+            <Node id="95" type="L">
+                <cx>43</cx>
+                <cy>37</cy>
+            </Node>
+            <Node id="62" type="L">
+                <cx>37</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="30" type="L">
+                <cx>35</cx>
+                <cy>30</cy>
+            </Node>
+            <Node id="28" type="L">
+                <cx>30</cx>
+                <cy>30</cy>
+            </Node>
+            <Node id="32" type="L">
+                <cx>30</cx>
+                <cy>30</cy>
+            </Node>
+            <Node id="50" type="L">
+                <cx>30</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="93" type="L">
+                <cx>35</cx>
+                <cy>52</cy>
+            </Node>
+            <Node id="96" type="L">
+                <cx>52</cx>
+                <cy>54</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>54</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="3">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="82" type="L">
+                <cx>50</cx>
+                <cy>43</cy>
+            </Node>
+            <Node id="11" type="L">
+                <cx>43</cx>
+                <cy>40</cy>
+            </Node>
+            <Node id="9" type="L">
+                <cx>40</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="10" type="L">
+                <cx>35</cx>
+                <cy>40</cy>
+            </Node>
+            <Node id="13" type="L">
+                <cx>40</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="17" type="L">
+                <cx>35</cx>
+                <cy>45</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>45</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="4">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="33" type="L">
+                <cx>50</cx>
+                <cy>25</cy>
+            </Node>
+            <Node id="26" type="L">
+                <cx>25</cx>
+                <cy>30</cy>
+            </Node>
+            <Node id="27" type="L">
+                <cx>30</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="29" type="L">
+                <cx>35</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="31" type="L">
+                <cx>35</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="34" type="L">
+                <cx>35</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="94" type="L">
+                <cx>35</cx>
+                <cy>48</cy>
+            </Node>
+            <Node id="91" type="L">
+                <cx>48</cx>
+                <cy>42</cy>
+            </Node>
+            <Node id="80" type="L">
+                <cx>42</cx>
+                <cy>47</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>47</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="5">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="71" type="L">
+                <cx>50</cx>
+                <cy>55</cy>
+            </Node>
+            <Node id="67" type="L">
+                <cx>55</cx>
+                <cy>42</cy>
+            </Node>
+            <Node id="84" type="L">
+                <cx>42</cx>
+                <cy>29</cy>
+            </Node>
+            <Node id="56" type="L">
+                <cx>29</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="66" type="L">
+                <cx>35</cx>
+                <cy>37</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>37</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="6">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="63" type="L">
+                <cx>50</cx>
+                <cy>20</cy>
+            </Node>
+            <Node id="85" type="L">
+                <cx>20</cx>
+                <cy>23</cy>
+            </Node>
+            <Node id="51" type="L">
+                <cx>23</cx>
+                <cy>20</cy>
+            </Node>
+            <Node id="76" type="L">
+                <cx>20</cx>
+                <cy>12</cy>
+            </Node>
+            <Node id="89" type="L">
+                <cx>12</cx>
+                <cy>5</cy>
+            </Node>
+            <Node id="48" type="L">
+                <cx>5</cx>
+                <cy>5</cy>
+            </Node>
+            <Node id="21" type="L">
+                <cx>5</cx>
+                <cy>5</cy>
+            </Node>
+            <Node id="25" type="L">
+                <cx>5</cx>
+                <cy>5</cy>
+            </Node>
+            <Node id="24" type="L">
+                <cx>5</cx>
+                <cy>15</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>15</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="7">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="2" type="L">
+                <cx>50</cx>
+                <cy>75</cy>
+            </Node>
+            <Node id="45" type="L">
+                <cx>75</cx>
+                <cy>82</cy>
+            </Node>
+            <Node id="3" type="L">
+                <cx>82</cx>
+                <cy>85</cy>
+            </Node>
+            <Node id="5" type="L">
+                <cx>85</cx>
+                <cy>85</cy>
+            </Node>
+            <Node id="8" type="L">
+                <cx>85</cx>
+                <cy>80</cy>
+            </Node>
+            <Node id="6" type="L">
+                <cx>80</cx>
+                <cy>75</cy>
+            </Node>
+            <Node id="7" type="L">
+                <cx>75</cx>
+                <cy>75</cy>
+            </Node>
+            <Node id="46" type="L">
+                <cx>75</cx>
+                <cy>80</cy>
+            </Node>
+            <Node id="4" type="L">
+                <cx>80</cx>
+                <cy>80</cy>
+            </Node>
+            <Node id="1" type="L">
+                <cx>80</cx>
+                <cy>85</cy>
+            </Node>
+            <Node id="100" type="L">
+                <cx>85</cx>
+                <cy>67</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>67</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="8">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="83" type="L">
+                <cx>50</cx>
+                <cy>31</cy>
+            </Node>
+            <Node id="19" type="L">
+                <cx>31</cx>
+                <cy>10</cy>
+            </Node>
+            <Node id="23" type="L">
+                <cx>10</cx>
+                <cy>5</cy>
+            </Node>
+            <Node id="18" type="L">
+                <cx>5</cx>
+                <cy>5</cy>
+            </Node>
+            <Node id="22" type="L">
+                <cx>5</cx>
+                <cy>15</cy>
+            </Node>
+            <Node id="49" type="L">
+                <cx>15</cx>
+                <cy>12</cy>
+            </Node>
+            <Node id="20" type="L">
+                <cx>12</cx>
+                <cy>15</cy>
+            </Node>
+            <Node id="77" type="L">
+                <cx>15</cx>
+                <cy>3</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>3</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="9">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="69" type="L">
+                <cx>50</cx>
+                <cy>52</cy>
+            </Node>
+            <Node id="53" type="L">
+                <cx>52</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="98" type="L">
+                <cx>50</cx>
+                <cy>52</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>52</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="10">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="12" type="L">
+                <cx>50</cx>
+                <cy>45</cy>
+            </Node>
+            <Node id="14" type="L">
+                <cx>45</cx>
+                <cy>45</cy>
+            </Node>
+            <Node id="15" type="L">
+                <cx>45</cx>
+                <cy>40</cy>
+            </Node>
+            <Node id="16" type="L">
+                <cx>40</cx>
+                <cy>40</cy>
+            </Node>
+            <Node id="47" type="L">
+                <cx>40</cx>
+                <cy>45</cy>
+            </Node>
+            <Node id="78" type="L">
+                <cx>45</cx>
+                <cy>56</cy>
+            </Node>
+            <Node id="55" type="L">
+                <cx>56</cx>
+                <cy>60</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>60</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="11">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="64" type="L">
+                <cx>50</cx>
+                <cy>30</cy>
+            </Node>
+            <Node id="86" type="L">
+                <cx>30</cx>
+                <cy>24</cy>
+            </Node>
+            <Node id="87" type="L">
+                <cx>24</cx>
+                <cy>24</cy>
+            </Node>
+            <Node id="59" type="L">
+                <cx>24</cx>
+                <cy>20</cy>
+            </Node>
+            <Node id="97" type="L">
+                <cx>20</cx>
+                <cy>18</cy>
+            </Node>
+            <Node id="75" type="L">
+                <cx>18</cx>
+                <cy>5</cy>
+            </Node>
+            <Node id="58" type="L">
+                <cx>5</cx>
+                <cy>10</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>10</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="12">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="65" type="L">
+                <cx>50</cx>
+                <cy>40</cy>
+            </Node>
+            <Node id="99" type="L">
+                <cx>40</cx>
+                <cy>35</cy>
+            </Node>
+            <Node id="52" type="L">
+                <cx>35</cx>
+                <cy>30</cy>
+            </Node>
+            <Node id="57" type="L">
+                <cx>30</cx>
+                <cy>25</cy>
+            </Node>
+            <Node id="74" type="L">
+                <cx>25</cx>
+                <cy>20</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>20</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="13">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="81" type="L">
+                <cx>50</cx>
+                <cy>58</cy>
+            </Node>
+            <Node id="61" type="L">
+                <cx>58</cx>
+                <cy>65</cy>
+            </Node>
+            <Node id="68" type="L">
+                <cx>65</cx>
+                <cy>60</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>60</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="14">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="88" type="L">
+                <cx>50</cx>
+                <cy>58</cy>
+            </Node>
+            <Node id="79" type="L">
+                <cx>58</cx>
+                <cy>68</cy>
+            </Node>
+            <Node id="73" type="L">
+                <cx>68</cx>
+                <cy>60</cy>
+            </Node>
+            <Node id="60" type="L">
+                <cx>60</cx>
+                <cy>60</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>60</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+        <Route index="15">
+            <Node id="0" type="D">
+                <cx>50</cx>
+                <cy>50</cy>
+            </Node>
+            <Node id="90" type="L">
+                <cx>50</cx>
+                <cy>47</cy>
+            </Node>
+            <Node id="0" type="D">
+                <cx>47</cx>
+                <cy>50</cy>
+            </Node>
+        </Route>
+    </RouteSet>
+    <RouteLen>1534.29</RouteLen>
+</Result>
