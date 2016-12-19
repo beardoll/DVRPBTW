@@ -640,12 +640,12 @@ void Algorithm::run(vector<Car*> &finalCarSet, float &finalCost){  // 运行算法，
 			cout << "...............Segement:" << (int)floor(iter/segment)+1 << "................" << endl;
 			cout << "current best cost is:" << globalCost << endl;
 			cout << "hash table length is:" << hashTable.size() << endl;
-			cout << "shaw removal:" <<  "(score)-" << removeScore[0] << '\t' << "(freq)-" << removeFreq[0] << endl;
+			cout << "shaw   removal:" <<  "(score)-" << removeScore[0] << '\t' << "(freq)-" << removeFreq[0] << endl;
 			cout << "random removal:" <<  "(score)-" << removeScore[1] << '\t' << "(freq)-" << removeFreq[1] << endl;
-			cout << "worst removal:" <<  "(score)-" << removeScore[2] << '\t' << "(freq)-" << removeFreq[2] << endl;
-			cout << "greedy insert:" <<  "(score)-" << insertScore[0] << '\t' << "(freq)-" << insertFreq[0] << endl;
-			cout << "regret insert:" <<  "(score)-" << insertScore[1] << '\t' << "(freq)-" << insertFreq[1] << endl;
-			cout << "noise add:" << "(score)-" << noiseScore[0] << "(freq)-" << noiseFreq[0] << endl;
+			cout << "worst  removal:" <<  "(score)-" << removeScore[2] << '\t' << "(freq)-" << removeFreq[2] << endl;
+			cout << "greedy  insert:" <<  "(score)-" << insertScore[0] << '\t' << "(freq)-" << insertFreq[0] << endl;
+			cout << "regret  insert:" <<  "(score)-" << insertScore[1] << '\t' << "(freq)-" << insertFreq[1] << endl;
+			cout << "noise    addIn:" <<  "(score)-" << noiseScore[0]  << '\t' << "(freq)-" << noiseFreq[0]  << endl;
 			cout << endl;
 			if(iter != 0){      // 如果不是第一个segment
 				// 更新权重

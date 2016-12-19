@@ -29,6 +29,7 @@ void OutputFile::exportData(){         // 主函数
 	ostringstream buffer;
 	string ss;
 	for(iter1 = carSet.begin(); iter1 < carSet.end(); iter1++){
+		// 写入Route节点
 		route = new TiXmlElement("Route");
 		route->SetAttribute("index", (*iter1)->getCarIndex());
 		vector<Customer*> tempcust= (*iter1)->getRoute().getAllCustomer();
@@ -36,10 +37,12 @@ void OutputFile::exportData(){         // 主函数
 		tempcust.insert(iter2, &depot);
 		tempcust.push_back(&depot);
 		for(iter2 = tempcust.begin(); iter2 < tempcust.end(); iter2++){
+			// 写入node节点
 			TiXmlElement *cx = new TiXmlElement("cx");
 			TiXmlElement *cy = new TiXmlElement("cy");
 			node = new TiXmlElement("Node");
 			node->SetAttribute("id", (*iter2)->id);
+			node->SetAttribute("type", (*iter2)->type);
 			buffer << (*iter2)->x;
 			ss = buffer.str();
 			cx->LinkEndChild(new TiXmlText(ss.c_str()));

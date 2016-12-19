@@ -43,7 +43,7 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
 			customer->type = 'L';
 			allCustomer.push_back(customer);
 		}
-    }
+	}
 
 	 // 读取其余信息
 	TiXmlElement* requestElem = hRoot.FirstChild("requests").FirstChild("request").Element(); // 指向了request节点
@@ -65,7 +65,7 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
 		tempFLOAT = (float)atof(serviceTimeElem->GetText());
 		customer->serviceTime = tempFLOAT;
 		count++;
-    }
+	}
 
 	// 读取capacity
 	TiXmlElement* capacityElem = hRoot.FirstChild("fleet").FirstChild("vehicle_profile").FirstChild("capacity").Element();
