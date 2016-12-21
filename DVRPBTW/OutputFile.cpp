@@ -34,8 +34,10 @@ void OutputFile::exportData(){         // 主函数
 		route->SetAttribute("index", (*iter1)->getCarIndex());
 		vector<Customer*> tempcust= (*iter1)->getRoute().getAllCustomer();
 		vector<Customer*>::iterator iter2 = tempcust.begin();
-		tempcust.insert(iter2, &depot);
-		tempcust.push_back(&depot);
+		Customer *newdepot1 = new Customer(depot);
+		Customer *newdepot2 = new Customer(depot);
+		tempcust.insert(iter2, newdepot1);
+		tempcust.push_back(newdepot2);
 		for(iter2 = tempcust.begin(); iter2 < tempcust.end(); iter2++){
 			// 写入node节点
 			TiXmlElement *cx = new TiXmlElement("cx");
@@ -54,6 +56,7 @@ void OutputFile::exportData(){         // 主函数
 				break;
 			}
 			buffer << (*iter2)->x;
+			ss = buffer.str();
 			cx->LinkEndChild(new TiXmlText(ss.c_str()));
 			buffer.str("");
 			buffer << (*iter2)->y;
