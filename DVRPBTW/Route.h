@@ -17,7 +17,8 @@ public:
 	const Customer& operator[] (int k) const; // 静态函数
 	bool isEmpty();   // 判断链表是否为空
 	bool insertAfter(Customer &item1, Customer &item2); // 在链表中与item1相同的节点后面插入节点item2
-	void insertAtFront(Customer &item);   // 在表头插入item
+	void insertAtHead(Customer &item);   // 在表头插入item
+	void insertAtRear(Customer &item);   // 在表尾插入item
 	bool deleteNode(Customer &item);   // 在链表中删除与item相同的节点
 	bool next();  // current指针往前走，若返回false，表示已经走到头
 	void printRoute();   // 打印路径

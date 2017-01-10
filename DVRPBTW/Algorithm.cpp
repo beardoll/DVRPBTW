@@ -13,27 +13,13 @@
 #include<functional>
 #include<numeric>
 #include<cstddef>
+#include "PublicFunction.h"
 
 using namespace std;
 
 const float MAX_FLOAT = numeric_limits<float>::max();
 const float LARGE_FLOAT = 10000.0f;
 
-double random(double start, double end){
-	return start+(end-start)*rand()/(RAND_MAX+1.0);
-}
-
-bool ascendSort(pair<float, int> x, pair<float, int> y){   // 递增排序
-	return x.first < y.first;
-}
-
-bool ascendSort2(pair<float, pair<int, int>> x, pair<float, pair<int, int>> y){  // 递增排序
-	return x.first < y.first;
-}
-
-bool descendSort2(pair<float, pair<int, int>> x, pair<float, pair<int, int>> y){  // 递减排序
-	return x.first > y.first;
-}
 
 void getAllCustomerInOrder(vector<Car*> originCarSet, vector<int> &customerNum, vector<Customer*> &allCustomerInOrder){
 	// 获取Car集合中所有的顾客
@@ -152,7 +138,7 @@ void Algorithm::shawRemoval(vector<Car*> &originCarSet, vector<Customer*> &remov
 			int index = indexsetInRoute[i];
 			currentR.push_back(R[selectedIndex*customerAmount + index]);
 		}
-		sort(currentR.begin(), currentR.end(), ascendSort);  // 相似性按小到大进行排序
+		sort(currentR.begin(), currentR.end(), ascendSort<float, int>);  // 相似性按小到大进行排序
 		float y = rand()/(RAND_MAX+1.0f);  // 产生0-1之间的随机数
 		int indexsetInRouteLen = indexsetInRoute.end() - indexsetInRoute.begin();  // indexsetInRoute的长度
 		int removeNum = max((int)floor(pow(y,p)*indexsetInRouteLen), 1);             // 本次移除的节点数目
@@ -226,7 +212,7 @@ void Algorithm::worstRemoval(vector<Car*> &originCarSet, vector<Customer*> &remo
 	while((int)removedIndexset.size() < q){
 		vector<pair<float, int>> reducedCost(customerAmount);  // 各节点的移除代价	
 		computeReducedCost(originCarSet, indexsetInRoute, removedIndexset, reducedCost);
-		sort(reducedCost.begin(), reducedCost.end(), ascendSort);   // 递增排序
+		sort(reducedCost.begin(), reducedCost.end(), ascendSort<float, int>);   // 递增排序
 		float y = rand()/(RAND_MAX+1.0f);  // 产生0-1之间的随机数
 		int indexInRouteLen = indexsetInRoute.end() - indexsetInRoute.begin();
 		int removedNum = static_cast<int>(max(floor(pow(y,p)*indexInRouteLen), 1.0f));
@@ -309,7 +295,7 @@ void Algorithm::greedyInsert(vector<Car*> &removedCarSet, vector<Customer*> remo
 			minValue = minInsertPerRoute.getMinAtCol(index, pos);
 			minInsertPerRestCust.push_back(make_pair(minValue, make_pair(index, pos)));
 		}	
-		sort(minInsertPerRestCust.begin(), minInsertPerRestCust.end(), ascendSort2);
+		sort(minInsertPerRestCust.begin(), minInsertPerRestCust.end(), ascendSort<float, pair<int, int>>);
 		int selectedCustIndex = minInsertPerRestCust[0].second.first;  // 被选中的顾客节点编号
 		if(minInsertPerRestCust[0].first != MAX_FLOAT){  // 如果找到了可行插入位置
 			int selectedCarIndex = minInsertPerRestCust[0].second.second;  // 被选中的车辆编号
@@ -324,7 +310,7 @@ void Algorithm::greedyInsert(vector<Car*> &removedCarSet, vector<Customer*> remo
 		} else {  // 没有可行插入位置，则再新开一辆货车
 			int selectedCarIndex = carNum++;  // 被选中的车辆编号
 			Car *newCar = new Car(depot, depot, capacity, selectedCarIndex);
-			newCar->getRoute().insertAtFront(*removedCustomer[selectedCustIndex]);
+			newCar->getRoute().insertAtHead(*removedCustomer[selectedCustIndex]);
 			removedCarSet.push_back(newCar);  // 添加到货车集合中
 			alreadyInsertIndex.push_back(selectedCustIndex); // 更新selectedCustIndex
 			sort(alreadyInsertIndex.begin(), alreadyInsertIndex.end());  // set_difference要求先排序
@@ -387,13 +373,13 @@ void Algorithm::regretInsert(vector<Car*> &removedCarSet, vector<Customer*> remo
 				}
 			}
 		}
-		sort(regretdiffPerRestCust.begin(), regretdiffPerRestCust.end(), descendSort2);  // 应该由大到小进行排列
+		sort(regretdiffPerRestCust.begin(), regretdiffPerRestCust.end(), descendSort<float, pair<int, int>>);  // 应该由大到小进行排列
 		if(regretdiffPerRestCust[0].first == MAX_FLOAT) {
 			// 如果所有的节点都没有可行插入点，则开辟新车
 			selectedCarIndex = carNum++;
 			selectedCustIndex = regretdiffPerRestCust[0].second.first;
 			Car *newCar = new Car(depot, depot, capacity, selectedCarIndex);
-			newCar->getRoute().insertAtFront(*removedCustomer[selectedCustIndex]);
+			newCar->getRoute().insertAtHead(*removedCustomer[selectedCustIndex]);
 			removedCarSet.push_back(newCar);  // 添加到货车集合中
 			alreadyInsertIndex.push_back(selectedCustIndex); // 更新selectedCustIndex
 			sort(alreadyInsertIndex.begin(), alreadyInsertIndex.end());

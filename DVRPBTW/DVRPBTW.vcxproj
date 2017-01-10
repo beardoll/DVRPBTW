@@ -66,25 +66,30 @@
     <ClInclude Include="Car.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Dispatcher.h" />
-    <ClInclude Include="EventList.h" />
+    <ClInclude Include="EventElement.h" />
     <ClInclude Include="OutputFile.h" />
     <ClInclude Include="LoadFile.h" />
     <ClInclude Include="Matrix.h" />
-    <ClInclude Include="ProbInfo.h" />
+    <ClInclude Include="PublicFunction.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="Simulator.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
+    <ClInclude Include="SetBench.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Dispatcher.cpp" />
     <ClCompile Include="LoadFile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OutputFile.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="SetBench.cpp" />
+    <ClCompile Include="Simulator.cpp" />
+    <ClCompile Include="Timer.cpp" />
     <ClCompile Include="tinystr.cpp" />
     <ClCompile Include="tinyxml.cpp" />
     <ClCompile Include="tinyxmlerror.cpp" />

@@ -128,22 +128,31 @@ bool Route::insertAfter(Customer &item1, Customer &item2){
 	return true;
 }
 
-void Route::insertAtFront(Customer &item){ // 在表头插入item
+void Route::insertAtHead(Customer &item){ // 在表头插入item
 	Customer *temp = new Customer;
 	*temp = item;
-	if(size == 0){
-		// 如果是空链表
-		head->next = temp;
-		temp->front = head;
-		temp->next = rear;
-		rear->front = temp;
-		current = head;
-	}else{  // 否则front指向了一个Customer节点，拥有属性next
-		temp->next = head->next;
-		head->next->front = temp;
-		head->next = temp;
-		temp->front = head;
+	temp->next = head->next;
+	head->next->front = temp;
+	head->next = temp;
+	temp->front = head;
+	switch (item.type){
+	case 'L':
+		quantityL = quantityL + item.quantity;
+		break;
+	case 'B':
+		quantityB = quantityB + item.quantity;
+		break;
 	}
+	size++;
+}
+
+void Route::insertAtRear(Customer &item){   // 在表尾插入item
+	Customer *temp = new Customer;
+	*temp = item;
+	temp->next = rear;
+	temp->front = rear->front;
+	rear->front->next = temp;
+	rear->front = temp;
 	switch (item.type){
 	case 'L':
 		quantityL = quantityL + item.quantity;

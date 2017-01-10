@@ -33,14 +33,14 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
 			depot.serviceTime = 0;
 			depot.arrivedTime = 0;
 			depot.startTime = 0;
-		} else {
+		} else {  // 取货点
 			customer = new Customer;
 			customer->id = tempINT;        
 			tempFLOAT = (float)atof(xElem->GetText());    // char转float
 			customer->x = tempFLOAT;
 			tempFLOAT = (float)atof(yElem->GetText());
 			customer->y = tempFLOAT;
-			customer->type = 'L';
+			customer->type = 'P';
 			allCustomer.push_back(customer);
 		}
 	}

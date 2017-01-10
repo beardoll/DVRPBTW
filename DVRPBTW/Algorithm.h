@@ -5,7 +5,7 @@
 
 class Algorithm{  // 算法类
 public:
-	Algorithm(vector<Customer*> allCustomer, Customer depot, float capacity):allCustomer(allCustomer), depot(depot), capacity(capacity){};
+	Algorithm(vector<Customer*> allCustomer, Customer depot, float capacity, float maxIter):allCustomer(allCustomer), depot(depot), capacity(capacity), maxIter(maxIter){};
 	~Algorithm(){};
 	void shawRemoval(vector<Car*> &originCarSet, vector<Customer*> &removedCustomer, int q, int p, float maxd, float maxt, float maxquantity);
 	void randomRemoval(vector<Car*> &originCarSet, vector<Customer*> &removedCustomer, int q);
@@ -19,6 +19,7 @@ private:
 	vector<Customer*> allCustomer;
 	Customer depot;
 	float capacity;
+	int maxIter;  // 最大迭代次数
 };
 
 #endif

@@ -5,8 +5,8 @@
 
 struct ProbInfo{
 	// 顾客未知信息
-	Matrix<float> timeProb; // 顾客在各时间段提出需求的概率
-	Matrix<float> demandProb;  // 顾客的货物需求量分布（离散量）
-}
+	Matrix<float> timeProb;    // 顾客在各时间段提出需求的概率
+};
+
 
 #endif

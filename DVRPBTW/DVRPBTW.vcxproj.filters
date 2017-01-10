@@ -27,9 +27,6 @@
     <ClInclude Include="Simulator.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="ProbInfo.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Matrix.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -37,9 +34,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Dispatcher.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="EventList.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
@@ -58,6 +52,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="OutputFile.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SetBench.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EventElement.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PublicFunction.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
@@ -90,6 +93,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="OutputFile.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SetBench.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Dispatcher.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Simulator.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

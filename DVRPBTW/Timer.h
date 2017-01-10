@@ -2,20 +2,24 @@
 #define _TIMER_H
 
 #include<vector>
-#include "EventList.h"
+#include "EventElement.h"
+#include "Customer.h"
+
 
 class Timer{  // 事件触发器
 public:
-	Timer(vector<Customer*>, float* timeDivision, int size=0);   // 构造函数，输入参数为所有顾客，以及各时间段开始值
-	~Timer();  // 析构函数
-	EventList& pop();   // 把事件表第一个元素弹出
-	void addEventList(vector<EventList*> newEventList);  // 往事件表中增加事件
-	void deleteEventList(vector<string*> eventType);     // 删除eventType类型的事件
+	Timer(vector<Customer*> staticCustomerSet, vector<Customer*> dynamicCustomerSet, int timeSlotLen);   // 构造函数，输入参数为所有顾客，以及各时间段开始值
+	~Timer(){};  // 析构函数
+	EventElement& pop();    // 把事件表的第一个元素弹出来
+	void addEventElement(EventElement &newEvent);     // 往事件表中增加事件
+	void updateEventElement(EventElement &newEvent);  // 更新事件
+	void deleteEventList(EventType eventType);              // 删除eventType类型的事件
 	void run();   // 调度中心进行运作，需要初始化Dispatcher
 private:
-	vector<EventList*> eventList;  // 事件表
-	int size;     // 事件表的长度
-	
+	vector<EventElement> eventList;     // 事件队列
+	vector<Customer*> staticCustomerSet;   // 提前已知的顾客（静态顾客）
+	vector<Customer*> dynamicCustomerSet;  // 动态到达的顾客
+	int timeSlotLen;    // 时间段的长度
 };
 
 #endif

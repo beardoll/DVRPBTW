@@ -48,11 +48,8 @@ void OutputFile::exportData(){         // Ö÷º¯Êý
 			case 'D':
 				node->SetAttribute("type", "D");
 				break;
-			case 'L':
-				node->SetAttribute("type", "L");
-				break;
-			case 'B':
-				node->SetAttribute("type", "B");
+			case 'P':
+				node->SetAttribute("type", "P");
 				break;
 			}
 			buffer << (*iter2)->x;
