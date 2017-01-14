@@ -30,9 +30,6 @@
     <ClInclude Include="Matrix.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="Algorithm.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Dispatcher.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -63,15 +60,18 @@
     <ClInclude Include="PublicFunction.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SSALNS.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ALNS.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Route.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Algorithm.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Car.cpp">
@@ -105,6 +105,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Simulator.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SSALNS.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ALNS.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

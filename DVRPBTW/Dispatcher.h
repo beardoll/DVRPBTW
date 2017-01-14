@@ -20,9 +20,11 @@ public:
 	// 增加已知需求的顾客集，在此处调用Simulator类
 	void setSamplingRate(int samplingRate);   // 设置采样率
 private:
-	vector<Customer*> mustServedCustomerSet;  // 必须提供服务的顾客集
-	vector<Customer*> mayServedCustomerSet;   // 可能提供服务的顾客集
-	vector<Customer*> dynamicCustomerSet;     // 未来可能到达的顾客 
+	vector<Customer*> allCustomer;    // 所有的顾客
+	vector<int> ServedCustomerId;     // 已经服务过的顾客id
+	vector<int> promisedCustomerId;   // (未服务过的)已经得到'OK' promise的顾客id
+	vector<int> waitCustomerId;       // (未服务过的且已知的)还在等待'OK' promise的顾客id
+	vector<int> rejectCustomerId;     // (未服务过的且已知的)得到了'NO' promise的顾客id
 	vector<Car*> currentPlan;                 // 当前计划
 	int samplingRate;    // 采样率
 };

@@ -11,7 +11,7 @@
 const float MAX_FLOAT = numeric_limits<float>::max();
 
 using namespace std;
-Route::Route(Customer &headNode, Customer &rearNode, float capacity):capacity(capacity), quantityL(0), quantityB(0){ // ¹¹Ôìº¯Êı
+Route::Route(Customer &headNode, Customer &rearNode, float capacity):capacity(capacity), quantity(0){ // ¹¹Ôìº¯Êı
 	head = new Customer;
 	*head = headNode;  // ¸´ÖÆ½Úµã
 	rear = new Customer;
@@ -35,8 +35,7 @@ void Route::copy(const Route &L){
 	this->size = L.size;
 	this->carIndex = L.carIndex;
 	this->capacity = L.capacity;
-	this->quantityL = L.quantityL;
-	this->quantityB = L.quantityB;
+	this->quantity = L.quantity;
 	Customer* originPtr = L.head;
 	Customer* copyPtr = head;
 	Customer* temp;
@@ -112,14 +111,7 @@ bool Route::insertAfter(Customer &item1, Customer &item2){
 		// Ã»ÓĞÕÒµ½£¬·µ»Øfalse
 		return false;
 	} 
-	switch (item2.type){
-	case 'L':
-		quantityL = quantityL + item2.quantity;
-		break;
-	case 'B':
-		quantityB = quantityB + item2.quantity;
-		break;
-	}
+	quantity = quantity + item2.quantity;
 	temp->next = ptr->next;
 	ptr->next->front = temp;
 	temp->front = ptr;
@@ -131,18 +123,20 @@ bool Route::insertAfter(Customer &item1, Customer &item2){
 void Route::insertAtHead(Customer &item){ // ÔÚ±íÍ·²åÈëitem
 	Customer *temp = new Customer;
 	*temp = item;
-	temp->next = head->next;
-	head->next->front = temp;
-	head->next = temp;
-	temp->front = head;
-	switch (item.type){
-	case 'L':
-		quantityL = quantityL + item.quantity;
-		break;
-	case 'B':
-		quantityB = quantityB + item.quantity;
-		break;
+	if(size == 0){
+		// Èç¹ûÊÇ¿ÕÁ´±í
+		head->next = temp;
+		temp->front = head;
+		temp->next = rear;
+		rear->front = temp;
+		current = head;
+	}else{  // ·ñÔòfrontÖ¸ÏòÁËÒ»¸öCustomer½Úµã£¬ÓµÓĞÊôĞÔnext
+		temp->next = head->next;
+		head->next->front = temp;
+		head->next = temp;
+		temp->front = head;
 	}
+	quantity = quantity + item.quantity;
 	size++;
 }
 
@@ -153,14 +147,7 @@ void Route::insertAtRear(Customer &item){   // ÔÚ±íÎ²²åÈëitem
 	temp->front = rear->front;
 	rear->front->next = temp;
 	rear->front = temp;
-	switch (item.type){
-	case 'L':
-		quantityL = quantityL + item.quantity;
-		break;
-	case 'B':
-		quantityB = quantityB + item.quantity;
-		break;
-	}
+	quantity = quantity + item.quantity;
 	size++;
 }
 
@@ -182,14 +169,7 @@ bool Route::deleteNode(Customer &item){
 		nextNode->front = frontNode;
 		delete temp1;
 		size--;
-		switch (item.type){
-		case 'L':
-			quantityL = quantityL - item.quantity;
-			break;
-		case 'B':
-			quantityB = quantityB - item.quantity;
-			break;
-		}
+		quantity = quantity - item.quantity;
 		return true;
 	}
 }
@@ -242,14 +222,7 @@ Route& Route::capture(){
 		ptr4->next = ptr3;
 		ptr3->front = ptr4;
 		ptr4 = ptr3;
-		switch (ptr2->type){
-		case 'L':
-			ptr1->quantityL = ptr1->quantityL + ptr2->quantity;
-			break;
-		case 'B':
-			ptr1->quantityB = ptr1->quantityB + ptr2->quantity;
-			break;
-		}
+		ptr1->quantity = ptr1->quantity + ptr2->quantity;
 		ptr2 = ptr2->next;
 		ptr1->size++;
 	}
@@ -270,14 +243,7 @@ void Route::replaceRoute(const Route &route) {  // ÒÔrouteÌæ»»µôcurrentÖ¸ÕëºóµÄÂ
 	// Çå³ıÔ­Â·¾¶ÖĞcurrentÖ¸ÕëºóÃæµÄÔªËØ
 	// ²»°üÀ¨¶Ôrear½ÚµãµÄÇå³ı
 	while(ptr2 != rear) { 
-		switch (ptr2->type){
-		case 'L':
-			quantityL = quantityL - ptr2->quantity;
-			break;
-		case 'B':
-			quantityB = quantityB - ptr2->quantity;
-			break;
-		}
+		quantity = quantity - ptr2->quantity;
 		ptr3 = ptr2->next;
 		delete ptr2;
 		ptr2 = ptr3;
@@ -286,14 +252,7 @@ void Route::replaceRoute(const Route &route) {  // ÒÔrouteÌæ»»µôcurrentÖ¸ÕëºóµÄÂ
 	// ½«routeÖĞ³ıheadºÍrearÍâµÄ½Úµã¶¼¸´ÖÆµ½currentÖ¸Õëºó
 	ptr3 = current;
 	while(ptr1 != route.rear){  
-		switch (ptr1->type){
-		case 'L':
-			quantityL = quantityL + ptr1->quantity;
-			break;
-		case 'B':
-			quantityB = quantityB + ptr1->quantity;
-			break;
-		}
+		quantity = quantity + ptr1->quantity;
 		ptr2 = new Customer;
 		*ptr2 = *ptr1;
 		ptr3->next = ptr2;
@@ -334,6 +293,7 @@ vector<Customer*> Route::getAllCustomer(){  // µÃµ½Â·¾¶ÖĞËùÓĞµÄ¹Ë¿Í½Úµã
 vector<float> Route::computeReducedCost(){ 
 	// µÃµ½ËùÓĞ¹Ë¿Í½ÚµãµÄÒÆ³ı´ú¼Û
 	// ÖµÔ½Ğ¡±íÊ¾ÒÆ³ıËü¿ÉÒÔ½ÚÊ¡¸ü¶àµÄ´ú¼Û
+	// mark = true±íÊ¾ĞèÒªÌí¼Ó³Í·££¬mark = false±íÊ¾²»ĞèÒªÌí¼Ó³Í·£
 	vector<float> costArr(0);
 	Customer *ptr1 = head;   // Ç°½Úµã
 	Customer *ptr2, *ptr3;
@@ -407,7 +367,7 @@ bool Route::timeWindowJudge(Customer *pre, int pos, Customer item){
 }
 
 void Route::computeInsertCost(Customer item, float &minValue, Customer &customer1, float &secondValue, Customer &customer2,
-							  float noiseAmount, bool noiseAdd){
+							  float noiseAmount, bool noiseAdd, float penaltyPara){
 	// ¼ÆËãitem½ÚµãÔÚÂ·¾¶ÖĞµÄ×îĞ¡²åÈë´ú¼ÛºÍ´ÎĞ¡²åÈë´ú¼Û
 	// ·µ»ØÆä×î¼Ñ/´Î¼Ñ²åÈëµãÇ°ÃæµÄ¹Ë¿Í½Úµã
 	Customer *pre = head;
@@ -417,58 +377,30 @@ void Route::computeInsertCost(Customer item, float &minValue, Customer &customer
 	customer1.id = -1;
 	customer2.id = -1;
 	for(int i=0; i<=size; i++) {  // Ò»¹²ÓĞsize+1¸öÎ»ÖÃ¿ÉÒÔ¿¼ÂÇ²åÈë
-		switch(item.type){
-		case 'L':
-			if(pre->type == 'D' || pre->type == 'L') { // ÓÅÏÈ¼¶Ô¼Êø
-				if(quantityL + item.quantity <= capacity){   // ÈİÁ¿Ô¼Êø
-					if(timeWindowJudge(pre, i, item) == true) { // Âú×ãÊ±¼ä´°Ô¼Êø
-						float temp = sqrt(pow(pre->x - item.x, 2) + pow(pre->y - item.y, 2)) +
-								sqrt(pow(item.x - succ->x, 2) + pow(item.y - succ->y, 2)) -
-								sqrt(pow(pre->x - succ->x, 2) + pow(pre->y - succ->y, 2));
-						if(noiseAdd == true) { // Èç¹ûĞèÒªÌí¼ÓËæ»úÔëÉù
-							float y = rand()/(RAND_MAX+1.0f);   // y in (0,1)
-							float noise = -noiseAmount + 2*noiseAmount*y;
-							temp = max(temp+noise, 0.0f);
-						}
-						if(temp <= minValue){  // ÕÒµ½ÁË¸üĞ¡µÄ£¬¸üĞÂminValueºÍsecondValue
-							secondValue = minValue;
-							customer2 = customer1;
-							minValue = temp;
-							customer1 = *pre;
-						}
-					}
+		if(quantity + item.quantity <= capacity){   // ÈİÁ¿Ô¼Êø
+			if(timeWindowJudge(pre, i, item) == true) { // Âú×ãÊ±¼ä´°Ô¼Êø
+				float temp = sqrt(pow(pre->x - item.x, 2) + pow(pre->y - item.y, 2)) +
+						sqrt(pow(item.x - succ->x, 2) + pow(item.y - succ->y, 2)) -
+						sqrt(pow(pre->x - succ->x, 2) + pow(pre->y - succ->y, 2));
+				temp += penaltyPara;   // ³Í·£
+				if(noiseAdd == true) { // Èç¹ûĞèÒªÌí¼ÓËæ»úÔëÉù
+					float y = rand()/(RAND_MAX+1.0f);   // y in (0,1)
+					float noise = -noiseAmount + 2*noiseAmount*y;
+					temp = temp + noise;
+					// temp = max(temp+noise, 0.0f);
+				}
+				if(temp <= minValue){  // ÕÒµ½ÁË¸üĞ¡µÄ£¬¸üĞÂminValueºÍsecondValue
+					secondValue = minValue;
+					customer2 = customer1;
+					minValue = temp;
+					customer1 = *pre;
 				}
 			}
-			break;
-		case 'B':
-			if((pre->type == 'L' && succ->type == 'B') || (pre->type == 'L' && succ->type == 'D') || (pre->type == 'B') == true){  
-				// ÓÅÏÈ¼¶Ô¼Êø
-				if(quantityB + item.quantity <= capacity){    // ÈİÁ¿Ô¼Êø
-					if(timeWindowJudge(pre, i, item) == true) {  // Âú×ãÊ±¼ä´°Ô¼Êø
-						float temp = sqrt(pow(pre->x - item.x, 2) + pow(pre->y - item.y, 2)) +
-								sqrt(pow(item.x - succ->x, 2) + pow(item.y - succ->y, 2)) -
-								sqrt(pow(pre->x - succ->x, 2) + pow(pre->y - succ->y, 2));
-						if(noiseAdd == true) { // Èç¹ûĞèÒªÌí¼ÓËæ»úÔëÉù
-							float y = rand()/(RAND_MAX+1.0f);   // y in (0,1)
-							float noise = -noiseAmount + 2*noiseAmount*y;
-							temp = max(temp+noise, 0.0f);
-						}
-						if(temp <= minValue){  // ÕÒµ½ÁË¸üĞ¡µÄ£¬¸üĞÂminValueºÍsecondValue
-							secondValue = minValue;
-							customer2 = customer1;
-							minValue = temp;
-							customer1 = *pre;
-						}
-					
-					}
-				}
-			}
-			break;
 		}
-		pre = pre->next;
-		if(succ != rear){
-			succ = succ->next;
-		}
+	}
+	pre = pre->next;
+	if(succ != rear){
+		succ = succ->next;
 	}
 }
 
@@ -497,16 +429,69 @@ void Route::changeCarIndex(int newIndex){  // ¸üĞÂ³µÁ¾±àºÅ
 	carIndex = newIndex;
 }
 
-float Route::getLen(){   // µÃµ½Â·¾¶³¤¶È
+float Route::getLen(vector<float> DTpara, bool artificial){   // µÃµ½Â·¾¶³¤¶È
+	// ÌáÈ¡DTpara
+	float DT11, DT12, DT21, DT22, DT31, DT32;
+	vector<float>::iterator DTIter = DTpara.begin();
+	DT11 = *(DTIter++);
+	DT12 = *(DTIter++);
+	DT21 = *(DTIter++);
+	DT22 = *(DTIter++);
+	DT31 = *(DTIter++);
+	DT32 = *(DTIter++);
+
 	Customer *ptr1 = head;
 	Customer *ptr2 = head->next;
-	float len = 0;
-	while(ptr2 != NULL){
-		len = len + sqrt(pow(ptr1->x - ptr2->x, 2)+pow(ptr1->y - ptr2->y, 2));
-		ptr2 = ptr2->next;
-		ptr1 = ptr1->next;
+	if(artificial == false) { // real vehicle routing scheme
+		float len = 0;
+		while(ptr2 != NULL){
+			float temp1;
+			switch(ptr1->priority){
+			case 0:
+				temp1 = 0.0f;
+				break;
+			case 1:
+				temp1 = -DT11;
+				break;
+			case 2:
+				temp1 = -DT21;
+				break;
+			case 3:
+				temp1 = -DT31;
+				break;
+			}
+			len = len + sqrt(pow(ptr1->x - ptr2->x, 2)+pow(ptr1->y - ptr2->y, 2));
+			len += temp1;
+			ptr2 = ptr2->next;
+			ptr1 = ptr1->next;
+		}
+		return len;
+	} else {
+		float len = 0;
+		while(ptr2 != NULL){
+			float temp1 = 1.0f;
+			float temp2 = 1.0f;  // penalty paramter for two points
+			switch(ptr1->priority){
+			case 0:
+				temp1 = 0.0f;
+				break;
+			case 1:
+				temp1 = DT12;
+				break;
+			case 2:
+				temp1 = DT22;
+				break;
+			case 3:
+				temp1 = DT32;
+				break;
+			}
+			len = len + (temp1 + temp2)/2 * sqrt(pow(ptr1->x - ptr2->x, 2)+pow(ptr1->y - ptr2->y, 2));
+			len += temp1;
+			ptr2 = ptr2->next;
+			ptr1 = ptr1->next;
+		}
+		return len;		
 	}
-	return len;
 }
 
 vector<float> Route::getArrivedTime(){     // µÃµ½±¾³µËùÓĞ½ÚµãµÄarrivedTime

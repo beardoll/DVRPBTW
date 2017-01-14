@@ -1,15 +1,33 @@
 #include "Simulator.h"
-#include "Algorithm.h"
+#include "ALNS.h"
 #include "Matrix.h"
 #include "PublicFunction.h"
 #include<algorithm>
 
-Simulator::Simulator(int samplingRate, int timeSlotLen, Customer depot, float capacity):samplingRate(samplingRate), timeSlotLen(timeSlotLen),
-	depot(depot), capacity(capacity){ // 构造函数
-	mustServedCustomerSet.resize(0);
-	mayServedCustomerSet.resize(0);
-	dynamicCustomerSet.resize(0);
-	carSet.resize(0);
+Simulator::Simulator(int samplingRate, int timeSlotLen, Customer depot, vector<Customer*> promiseCustomerSet, vector<Customer*> waitCustomerSet,
+		vector<Customer*> dynamicCustomerSet, vector<Car*> currentPlan):samplingRate(samplingRate), timeSlotLen(timeSlotLen),
+		depot(depot){ // 构造函数
+	vector<Customer*>::iterator custIter;
+	this->promiseCustomerSet.reserve(promiseCustomerSet.end() - promiseCustomerSet.begin());
+	for(custIter = promiseCustomerSet.begin(); custIter < promiseCustomerSet.end(); custIter++) {
+		Customer* newCust = new Customer(**custIter);
+		this->promiseCustomerSet.push_back(newCust);
+	}
+	this->waitCustomerSet.reserve(waitCustomerSet.end() - waitCustomerSet.begin());
+	for(custIter = waitCustomerSet.begin(); custIter < waitCustomerSet.end(); custIter++) {
+		Customer* newCust = new Customer(**custIter);
+		this->waitCustomerSet.push_back(newCust);
+	}
+	this->dynamicCustomerSet.reserve(dynamicCustomerSet.end() - dynamicCustomerSet.begin());
+	for(custIter = dynamicCustomerSet.begin(); custIter < dynamicCustomerSet.end(); custIter++) {
+		Customer* newCust = new Customer(**custIter);
+		this->dynamicCustomerSet.push_back(newCust);
+	}
+	vector<Car*>::iterator carIter;
+	for(carIter = currentPlan.begin(); carIter < currentPlan.end(); carIter++) {
+		Car* newCar = new Car(**carIter);
+		this->currentPlan.push_back(newCar);
+	}
 }
 
 Simulator::~Simulator(){  // 析构函数
@@ -17,54 +35,33 @@ Simulator::~Simulator(){  // 析构函数
 	clearCustomerSet();
 }
 
-void Simulator::updateCustomerSet(vector<Customer*> mustServedCustomerSet, vector<Customer*> mayServedCustomerSet, vector<Customer*> dynamicCustomerSet){
-	clearCarSet();
-	vector<Customer*>::iterator iter;
-	Customer* newCustomer;
-	for(iter=mustServedCustomerSet.begin(); iter<mustServedCustomerSet.end(); iter++){
-		newCustomer = new Customer;
-		*newCustomer = **iter;
-		this->mustServedCustomerSet.push_back(newCustomer);
-	}
-	for(iter=mayServedCustomerSet.begin(); iter<mayServedCustomerSet.end(); iter++){
-		newCustomer = new Customer;
-		*newCustomer = **iter;
-		this->mayServedCustomerSet.push_back(newCustomer);
-	}
-	for(iter=dynamicCustomerSet.begin(); iter<dynamicCustomerSet.end(); iter++){
-		newCustomer = new Customer;
-		*newCustomer = **iter;
-		this->dynamicCustomerSet.push_back(newCustomer);
-	}
-}
-
 void Simulator::clearCustomerSet(){    // 清空本地顾客集
-	vector<Customer*>::iterator iter = mustServedCustomerSet.begin();
-	for(iter; iter<mustServedCustomerSet.end(); iter++){  
+	vector<Customer*>::iterator iter = promiseCustomerSet.begin();
+	for(iter; iter < promiseCustomerSet.end(); iter++){  
 		delete *iter;
 	}
-	iter = mayServedCustomerSet.begin();
-	for(iter; iter<mayServedCustomerSet.end(); iter++){
+	iter = waitCustomerSet.begin();
+	for(iter; iter < waitCustomerSet.end(); iter++){
 		delete *iter;
 	}
 	iter = dynamicCustomerSet.begin();
-	for(iter; iter<dynamicCustomerSet.end(); iter++){
+	for(iter; iter < dynamicCustomerSet.end(); iter++){
 		delete *iter;
 	}
-	mustServedCustomerSet.resize(0);
-	mayServedCustomerSet.resize(0);
+	promiseCustomerSet.resize(0);
+	waitCustomerSet.resize(0);
 	dynamicCustomerSet.resize(0);
 }
 
 void Simulator::clearCarSet(){  // 清空货车集合
-	vector<Car*>::iterator iter = carSet.begin();
-	for(iter; iter<carSet.end(); iter++) {
+	vector<Car*>::iterator iter = currentPlan.begin();
+	for(iter; iter<currentPlan.end(); iter++) {
 		delete *iter;
 	}
-	carSet.resize(0);
+	currentPlan.resize(0);
 }
 
-vector<Customer*> Simulator::generateScenario(){
+vector<Customer*> generateScenario(){
 	// 产生情景
 	// 根据动态顾客的随机信息产生其时间窗
 	vector<Customer*>::iterator iter = dynamicCustomerSet.begin();
@@ -72,14 +69,9 @@ vector<Customer*> Simulator::generateScenario(){
 		float randFloat = random(0,1);  // 产生随机数选择顾客可能提出需求的时间
 		float sumation = 0;
 		vector<float>::iterator iter2 = (*iter)->timeProb.begin();
-		int count = 1;  // 时间段计数
-		while(sumation < randFloat) {
-			sumation += *iter2;
-			count++;
-			iter2++;
-		}
-		float t1 = (count-1) * timeSlotLen;
-		float t2 = count * timeSlotLen;
+		int count = roulette((*iter)->timeProb);  // 时间段计数
+		float t1 = count * timeSlotLen;
+		float t2 = (count+1) * timeSlotLen;
 		float tempt = random(t1, t2);
 		float maxTime = (int)(*iter)->timeProb.size() * timeSlotLen;  // 最大允许时间
 		(*iter)->startTime = min(tempt, maxTime - 2*(*iter)->tolerantTime);
@@ -90,6 +82,7 @@ vector<Customer*> Simulator::generateScenario(){
 
 vector<int> getID(vector<Customer*> customerSet){ // 得到customerSet的所有Id
 	vector<int> ids(0);
+	ids.reserve(customerSet.end() - customerSet.begin());
 	vector<Customer*>::iterator iter = customerSet.begin();
 	for(iter; iter<customerSet.end(); iter++){
 		ids.push_back((*iter)->id);

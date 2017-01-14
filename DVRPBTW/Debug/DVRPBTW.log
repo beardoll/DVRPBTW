@@ -1,22 +1,321 @@
-﻿生成启动时间为 2016/12/21 21:59:46。
+﻿生成启动时间为 2017/1/14 21:44:29。
      1>项目“C:\Users\cfinsbear\Documents\DVRPBTW\DVRPBTW\DVRPBTW.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\visual studio 2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         D:\Visual Studio 2012\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Car.cpp Dispatcher.cpp LoadFile.cpp main.cpp OutputFile.cpp Route.cpp ALNS.cpp SetBench.cpp Simulator.cpp SSALNS.cpp Timer.cpp
+         Timer.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\timer.cpp(21): error C2039: “timeProb”: 不是“Customer”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(6) : 参见“Customer”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\timer.cpp(21): error C2228: “.size”的左边必须有类/结构/联合
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\timer.cpp(24): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+         SSALNS.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\publicfunction.h(13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\publicfunction.h(66): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\ssalns.cpp(131): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\ssalns.cpp(151): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\ssalns.cpp(183): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\ssalns.cpp(849): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+         Simulator.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\publicfunction.h(13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\publicfunction.h(66): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(19): error C3861: “clearCarSet”: 找不到标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(20): error C3861: “clearCustomerSet”: 找不到标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(23): error C2039: “updateCustomerSet”: 不是“Simulator”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.h(7) : 参见“Simulator”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(24): error C3861: “clearCarSet”: 找不到标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(30): error C2355: “this”: 只能在非静态成员函数的内部引用
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(30): error C2227: “->mustServedCustomerSet”的左边必须指向类/结构/联合/泛型类型
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(30): error C2228: “.push_back”的左边必须有类/结构/联合
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(35): error C2355: “this”: 只能在非静态成员函数的内部引用
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(35): error C2227: “->mayServedCustomerSet”的左边必须指向类/结构/联合/泛型类型
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(35): error C2228: “.push_back”的左边必须有类/结构/联合
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(40): error C2355: “this”: 只能在非静态成员函数的内部引用
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(40): error C2227: “->dynamicCustomerSet”的左边必须指向类/结构/联合/泛型类型
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(40): error C2228: “.push_back”的左边必须有类/结构/联合
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(44): error C2039: “clearCustomerSet”: 不是“Simulator”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.h(7) : 参见“Simulator”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(45): error C2065: “mustServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(45): error C2228: “.begin”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(46): error C2065: “mustServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(46): error C2228: “.end”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(49): error C2065: “mayServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(49): error C2228: “.begin”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(50): error C2065: “mayServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(50): error C2228: “.end”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(53): error C2065: “dynamicCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(53): error C2228: “.begin”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(54): error C2065: “dynamicCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(54): error C2228: “.end”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(57): error C2065: “mustServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(57): error C2228: “.resize”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(58): error C2065: “mayServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(58): error C2228: “.resize”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(59): error C2065: “dynamicCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(59): error C2228: “.resize”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(62): error C2039: “clearCarSet”: 不是“Simulator”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.h(7) : 参见“Simulator”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(63): error C2065: “carSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(63): error C2228: “.begin”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(64): error C2065: “carSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(64): error C2228: “.end”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(67): error C2065: “carSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(67): error C2228: “.resize”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(70): error C2039: “generateScenario”: 不是“Simulator”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.h(7) : 参见“Simulator”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(73): error C2065: “dynamicCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(73): error C2228: “.begin”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(74): error C2065: “dynamicCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(74): error C2228: “.end”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(77): error C2039: “timeProb”: 不是“Customer”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(6) : 参见“Customer”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(77): error C2228: “.begin”的左边必须有类/结构/联合
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(78): error C2039: “timeProb”: 不是“Customer”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(6) : 参见“Customer”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(79): error C2065: “timeSlotLen”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(80): error C2065: “timeSlotLen”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(82): error C2039: “timeProb”: 不是“Customer”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(6) : 参见“Customer”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(82): error C2228: “.size”的左边必须有类/结构/联合
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(82): error C2065: “timeSlotLen”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(156): error C2065: “mustServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(156): error C2228: “.begin”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(156): error C2228: “.end”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(156): error C2780: “void std::sort(_RanIt,_RanIt,_Pr)”: 应输入 3 个参数，却提供了 2 个
+                 d:\visual studio 2012\vc\include\algorithm(3864) : 参见“std::sort”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(157): error C2065: “mustServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(165): error C2065: “mustServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(165): error C2228: “.begin”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(166): error C2065: “mustServedCustomerSet”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(166): error C2228: “.end”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(173): error C2065: “Algorithm”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(173): error C2146: 语法错误: 缺少“;”(在标识符“alg”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(173): error C2065: “capacity”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(173): error C3861: “alg”: 找不到标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(176): error C2065: “alg”: 未声明的标识符
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(176): error C2228: “.run”的左边必须有类/结构/联合
+                 类型是“'unknown-type'”
+     1>d:\visual studio 2012\vc\include\xmemory0(777): error C2516: “_Alloc”: 是非法基类
+                 d:\visual studio 2012\vc\include\vector(444) : 参见“_Alloc”的声明
+                 d:\visual studio 2012\vc\include\vector(444): 参见对正在编译的类 模板 实例化“std::_Wrap_alloc<_Alloc>”的引用
+                 with
+                 [
+                     _Alloc=int
+                 ]
+                 d:\visual studio 2012\vc\include\vector(500): 参见对正在编译的类 模板 实例化“std::_Vec_base_types<_Ty,_Alloc0>”的引用
+                 with
+                 [
+                     _Ty=int,
+                     _Alloc0=int
+                 ]
+                 d:\visual studio 2012\vc\include\vector(657): 参见对正在编译的类 模板 实例化“std::_Vector_alloc<_Al_has_storage,_Alloc_types>”的引用
+                 with
+                 [
+                     _Al_has_storage=true,
+                     _Alloc_types=std::_Vec_base_types<int,int>
+                 ]
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\simulator.cpp(184): 参见对正在编译的类 模板 实例化“std::vector<_Ty,_Alloc>”的引用
+                 with
+                 [
+                     _Ty=int,
+                     _Alloc=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(419): error C2825: '_Alloc': 当后面跟“::”时必须为类或命名空间
+                 d:\visual studio 2012\vc\include\xmemory0(783): 参见对正在编译的类 模板 实例化“std::allocator_traits<_Alloc>”的引用
+                 with
+                 [
+                     _Alloc=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(419): error C2039: “value_type”: 不是“`global namespace'”的成员
+     1>d:\visual studio 2012\vc\include\xmemory0(419): error C2146: 语法错误: 缺少“;”(在标识符“value_type”的前面)
+     1>d:\visual studio 2012\vc\include\xmemory0(419): error C2602: “std::allocator_traits<_Alloc>::value_type”不是“std::allocator_traits<_Alloc>”基类的成员
+                 with
+                 [
+                     _Alloc=int
+                 ]
+                 d:\visual studio 2012\vc\include\xmemory0(419) : 参见“std::allocator_traits<_Alloc>::value_type”的声明
+                 with
+                 [
+                     _Alloc=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(419): error C2868: “std::allocator_traits<_Alloc>::value_type”: 非法的 using 声明语法；应输入限定名
+                 with
+                 [
+                     _Alloc=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(241): error C2825: '_Ty': 当后面跟“::”时必须为类或命名空间
+                 d:\visual studio 2012\vc\include\xmemory0(421): 参见对正在编译的类 模板 实例化“std::_Get_pointer_type<_Ty>”的引用
+                 with
+                 [
+                     _Ty=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(241): error C2039: “value_type”: 不是“`global namespace'”的成员
+     1>d:\visual studio 2012\vc\include\xmemory0(241): error C3646: “value_type”: 未知重写说明符
+     1>d:\visual studio 2012\vc\include\xmemory0(241): error C2143: 语法错误 : 缺少“;”(在“*”的前面)
+     1>d:\visual studio 2012\vc\include\xmemory0(241): error C2238: 意外的标记位于“;”之前
+     1>d:\visual studio 2012\vc\include\xmemory0(241): error C2988: 不可识别的模板声明/定义
+     1>d:\visual studio 2012\vc\include\xmemory0(241): error C2059: 语法错误:“<end Parse>”
+     1>d:\visual studio 2012\vc\include\xmemory0(421): error C2039: “type”: 不是“std::_Get_pointer_type<_Ty>”的成员
+                 with
+                 [
+                     _Ty=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(422): error C2146: 语法错误: 缺少“;”(在标识符“pointer”的前面)
+     1>d:\visual studio 2012\vc\include\xmemory0(422): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2039: “type”: 不是“std::_Get_pointer_type<_Ty>”的成员
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 d:\visual studio 2012\vc\include\xmemory0(423): 参见对正在编译的类 模板 实例化“std::_Get_const_pointer_type<_Ty>”的引用
+                 with
+                 [
+                     _Ty=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2146: 语法错误: 缺少“,”(在标识符“type”的前面)
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2065: “type”: 未声明的标识符
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2825: '_Ty': 当后面跟“::”时必须为类或命名空间
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2039: “value_type”: 不是“`global namespace'”的成员
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2146: 语法错误: 缺少“,”(在标识符“value_type”的前面)
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2065: “value_type”: 未声明的标识符
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2893: 未能使函数模板“pointer_traits::rebind::other std::_Get_const_pointer_type<_Ty>::_Fn(std::_Wrap_int)”专用化
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 用下列模板参数:
+                 'int'
+     1>d:\visual studio 2012\vc\include\xmemory0(248): error C2770: “_Uty::const_pointer std::_Get_const_pointer_type<_Ty>::_Fn(int)”的显式 模板 参数无效
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 d:\visual studio 2012\vc\include\xmemory0(248) : 参见“std::_Get_const_pointer_type<_Ty>::_Fn”的声明
+                 with
+                 [
+                     _Ty=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(255): error C2039: “type”: 不是“std::_Get_pointer_type<_Ty>”的成员
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 d:\visual studio 2012\vc\include\xmemory0(425): 参见对正在编译的类 模板 实例化“std::_Get_void_pointer_type<_Ty>”的引用
+                 with
+                 [
+                     _Ty=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(255): error C2146: 语法错误: 缺少“,”(在标识符“type”的前面)
+     1>d:\visual studio 2012\vc\include\xmemory0(255): error C2065: “type”: 未声明的标识符
+     1>d:\visual studio 2012\vc\include\xmemory0(255): error C2893: 未能使函数模板“pointer_traits::rebind<void>::other std::_Get_void_pointer_type<_Ty>::_Fn(std::_Wrap_int)”专用化
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 用下列模板参数:
+                 'int'
+     1>d:\visual studio 2012\vc\include\xmemory0(255): error C2770: “_Uty::void_pointer std::_Get_void_pointer_type<_Ty>::_Fn(int)”的显式 模板 参数无效
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 d:\visual studio 2012\vc\include\xmemory0(255) : 参见“std::_Get_void_pointer_type<_Ty>::_Fn”的声明
+                 with
+                 [
+                     _Ty=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(262): error C2039: “type”: 不是“std::_Get_pointer_type<_Ty>”的成员
+                 with
+                 [
+                     _Ty=int
+                 ]
+                 d:\visual studio 2012\vc\include\xmemory0(427): 参见对正在编译的类 模板 实例化“std::_Get_const_void_pointer_type<_Ty>”的引用
+                 with
+                 [
+                     _Ty=int
+                 ]
+     1>d:\visual studio 2012\vc\include\xmemory0(262): error C2146: 语法错误: 缺少“,”(在标识符“type”的前面)
+     1>d:\visual studio 2012\vc\include\xmemory0(262): error C2065: “type”: 未声明的标识符
+     1>d:\visual studio 2012\vc\include\xmemory0(262): fatal error C1003: 错误计数超过 100；正在停止编译
+         SetBench.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\publicfunction.h(13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\publicfunction.h(66): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\setbench.cpp(18): error C2039: “timeProb”: 不是“Customer”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(6) : 参见“Customer”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\setbench.cpp(40): error C2039: “timeProb”: 不是“Customer”的成员
+                 c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(6) : 参见“Customer”的声明
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\setbench.cpp(41): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\setbench.cpp(42): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\setbench.cpp(44): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\setbench.cpp(48): warning C4305: “参数”: 从“double”到“float”截断
+         ALNS.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\publicfunction.h(13): warning C4244: “return”: 从“double”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\publicfunction.h(66): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\alns.cpp(129): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\alns.cpp(149): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\alns.cpp(181): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\alns.cpp(472): error C2660: “Route::getLen”: 函数不接受 0 个参数
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\alns.cpp(687): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+         Route.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+         OutputFile.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
          main.cpp
-       Link:
-         D:\visual studio 2012\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.lib" /MACHINE:X86 Debug\Car.obj
-         Debug\LoadFile.obj
-         Debug\main.obj
-         Debug\OutputFile.obj
-         Debug\Route.obj
-         Debug\Algorithm.obj
-         Debug\tinystr.obj
-         Debug\tinyxml.obj
-         Debug\tinyxmlerror.obj
-         Debug\tinyxmlparser.obj
-         DVRPBTW.vcxproj -> C:\Users\cfinsbear\Documents\DVRPBTW\Debug\DVRPBTW.exe
-     1>已完成生成项目“C:\Users\cfinsbear\Documents\DVRPBTW\DVRPBTW\DVRPBTW.vcxproj”(Build 个目标)的操作。
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\main.cpp(7): fatal error C1083: 无法打开包括文件:“Algorithm.h”: No such file or directory
+         LoadFile.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+     1>c1xx : fatal error C1903: 无法从以前的错误中恢复；正在停止编译
+         Dispatcher.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+         Car.cpp
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2143: 语法错误 : 缺少“;”(在“<”的前面)
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+     1>c:\users\cfinsbear\documents\dvrpbtw\dvrpbtw\customer.h(20): error C2238: 意外的标记位于“;”之前
+         正在生成代码...
+     1>已完成生成项目“C:\Users\cfinsbear\Documents\DVRPBTW\DVRPBTW\DVRPBTW.vcxproj”(Build 个目标)的操作 - 失败。
 
-生成成功。
+生成失败。
 
-已用时间 00:00:01.18
+已用时间 00:00:04.24

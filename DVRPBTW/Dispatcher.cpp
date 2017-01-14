@@ -1,13 +1,27 @@
 #include "Dispatcher.h"
+#include<algorithm>
 
-Dispatcher::Dispatcher(vector<Customer*> staticCustomerSet, vector<Customer*> dynamicCustomerSet, int samplingRate):
-	dynamicCustomerSet(dynamicCustomerSet), samplingRate(samplingRate){
-	// 构造函数
-	// 在此处应该生成初始计划集
-	mustServedCustomerSet.resize(staticCustomerSet.size());
-	copy(staticCustomerSet.begin(), staticCustomerSet.end(), mustServedCustomerSet.begin());  // 初始已知的顾客都是must served类型
-	mayServedCustomerSet.resize(0);    // 初始化may served类型的集合为空
-	currentPlan.resize(0);
+bool ascendSortForCustId(Customer* item1, Customer* item2) {
+	return item1->id < item2->id;
+}
+
+Dispatcher::Dispatcher(vector<Customer*> staticCustomerSet, vector<Customer*> dynamicCustomerSet, int samplingRate){
+	int custNum = staticCustomerSet.end() - staticCustomerSet.begin() + dynamicCustomerSet.end() - dynamicCustomerSet.begin(); // 总顾客数
+	ServedCustomerId.reserve(custNum);     // 已经服务过的顾客id
+	promisedCustomerId.reserve(custNum);
+	waitCustomerId.reserve(custNum);
+	rejectCustomerId.reserve(custNum);
+	vector<Customer*>::iterator custIter = staticCustomerSet.begin();
+	for(custIter; custIter < staticCustomerSet.end(); custIter++) {
+		Customer* newCust = new Customer(**custIter);
+		allCustomer.push_back(newCust);
+		promisedCustomerId.push_back(newCust->id);
+	}
+	for(custIter = dynamicCustomerSet.begin(); custIter < dynamicCustomerSet.end(); custIter++) {
+		Customer* newCust = new Customer(**custIter);
+		allCustomer.push_back(newCust);		
+	}
+	sort(allCustomer.begin(), allCustomer.end(), ascendSortForCustId);  // 按id进行递增排序
 }
 
 void Dispatcher::setSamplingRate(int samplingRate){   // 设置采样率

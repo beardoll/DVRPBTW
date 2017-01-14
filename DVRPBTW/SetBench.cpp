@@ -8,28 +8,6 @@
 SetBench::SetBench(vector<Customer*> originCustomerSet, int timeSlotLen, int timeSlotNum):
 	originCustomerSet(originCustomerSet), timeSlotLen(timeSlotLen), timeSlotNum(timeSlotNum){}// 构造函数
 
-
-vector<int> getRandom(int lb, int ub, int m, vector<int> &restData){
-	// 产生m个不同的，范围为[lb, ub)的随机数
-	// restData, 除了返回值外剩余的数值
-	restData.resize(0);
-	for(int i=0; i<ub-lb; i++) {
-		restData.push_back(i+lb);
-	}
-	int total = m;
-	vector<int> outputData(0);
-	for(int j=0; j<m; j++) {
-		vector<int>::iterator iter = restData.begin();
-		int num = rand() % total; // 0-total-1
-		iter += num;
-		int temp = *(iter);
-		outputData.push_back(num);
-		restData.erase(iter);
-		total--;
-	}
-	return outputData;
-}
-
 void SetBench::constructProbInfo(){ 
 	// 设置各个节点的概率信息
 	vector<int> BHsPos(0);                     // BHs的位置
@@ -59,17 +37,9 @@ void SetBench::construct(vector<Customer*> &staticCustomerSet, vector<Customer*>
 		} else {  
 			staticCustomerSet.push_back(*iter);
 		}
-		float randFloat = random(0, 1);
-		float accumulation = 0;   // 轮盘算法
-		int timeSlot = 0;         // 时间段
-		vector<float>::iterator iter2 = (*iter)->timeProb.begin();
-		i=1;  // 选中的时间段
-		while(accumulation < randFloat) {
-			accumulation += *(iter2++);	
-			i++;
-		}
-		float t1 = (i-1) * timeSlotLen;  // 时间段的开始
-		float t2 = i * timeSlotLen;      // 时间段的结束
+		int selectSlot = roulette((*iter)->timeProb);   // 利用轮盘算法采样得出顾客可能提出需求的时间段
+		float t1 = (selectSlot-1) * timeSlotLen;  // 时间段的开始
+		float t2 = selectSlot * timeSlotLen;      // 时间段的结束
 		float tempt = random(t1, t2);
 		float maxActiveTime = timeSlotNum * timeSlotNum;  // 货车可工作的最晚时间
 		(*iter)->startTime =  min(tempt, maxActiveTime - 2 * (*iter)->serviceTime); // 至少宽限2倍的serviceTime

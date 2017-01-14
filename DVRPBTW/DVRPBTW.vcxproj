@@ -62,7 +62,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Algorithm.h" />
+    <ClInclude Include="ALNS.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Dispatcher.h" />
@@ -73,6 +73,7 @@
     <ClInclude Include="PublicFunction.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="Simulator.h" />
+    <ClInclude Include="SSALNS.h" />
     <ClInclude Include="test.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="tinystr.h" />
@@ -86,9 +87,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OutputFile.cpp" />
     <ClCompile Include="Route.cpp" />
-    <ClCompile Include="Algorithm.cpp" />
+    <ClCompile Include="ALNS.cpp" />
     <ClCompile Include="SetBench.cpp" />
     <ClCompile Include="Simulator.cpp" />
+    <ClCompile Include="SSALNS.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="tinystr.cpp" />
     <ClCompile Include="tinyxml.cpp" />
