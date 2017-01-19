@@ -6,7 +6,7 @@
 #include "Customer.h"
 using namespace std;
 
-enum EventType{newCustomer, carArrived, finishedService, carDepature, newTimeSlot};
+enum EventType{newCustomer, carArrived, finishedService, carDepature, newTimeSlot, carOffWork};
 // 事件  
 // 1.新顾客到达
 // 2.货车到达目的地

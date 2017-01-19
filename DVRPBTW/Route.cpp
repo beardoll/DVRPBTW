@@ -11,7 +11,7 @@
 const float MAX_FLOAT = numeric_limits<float>::max();
 
 using namespace std;
-Route::Route(Customer &headNode, Customer &rearNode, float capacity):capacity(capacity), quantity(0){ // 构造函数
+Route::Route(Customer &headNode, Customer &rearNode, float capacity):capacity(capacity){ // 构造函数
 	head = new Customer;
 	*head = headNode;  // 复制节点
 	rear = new Customer;
@@ -24,6 +24,8 @@ Route::Route(Customer &headNode, Customer &rearNode, float capacity):capacity(ca
 	size = 0;
 	carIndex = -1;
 	arrivedTime.push_back(0);
+	quantity = 0;
+	leftQuantity = capacity;
 }
 
 Route::~Route(){ // 析构函数
@@ -36,6 +38,7 @@ void Route::copy(const Route &L){
 	this->carIndex = L.carIndex;
 	this->capacity = L.capacity;
 	this->quantity = L.quantity;
+	this->leftQuantity = L.leftQuantity;
 	Customer* originPtr = L.head;
 	Customer* copyPtr = head;
 	Customer* temp;
@@ -94,6 +97,15 @@ Route& Route::operator= (const Route &L){
 
 bool Route::isEmpty(){ //判断链表是否为空
 	return (size==0);
+}
+
+bool Route::moveForward(){
+	current = current->next;
+	if(current == NULL) {  // 已经完成任务
+		return false;
+	} else {
+		return true;
+	}
 }
 
 bool Route::insertAfter(Customer &item1, Customer &item2){
@@ -183,7 +195,7 @@ bool Route::next(){ // current指针往前走
 	}
 }
 
-Customer& Route::currentPos(){ // 返回当前位置
+Customer Route::currentPos(){ // 返回当前位置
 	return *current;
 }
 
@@ -232,24 +244,22 @@ Route& Route::capture(){
 }
 
 void Route::replaceRoute(const Route &route) {  // 以route替换掉current指针后的路径
-	if(current == head) { // 空路径，直接复制即可
-		this->clear();   
-		this->copy(route);
-		return;
-	}
-	Customer* ptr1 = route.head->next;
+	Customer* ptr1;
 	Customer *ptr2, *ptr3;
-	ptr2 = current->next;
-	// 清除原路径中current指针后面的元素
-	// 不包括对rear节点的清除
-	while(ptr2 != rear) { 
-		quantity = quantity - ptr2->quantity;
-		ptr3 = ptr2->next;
-		delete ptr2;
-		ptr2 = ptr3;
-		size--;
+	if(current->next != rear) { // current后面还有节点，需要先清除原有路径
+		ptr2 = current->next;
+		// 清除原路径中current指针后面的元素
+		// 不包括对rear节点的清除
+		while(ptr2 != rear) { 
+			quantity = quantity - ptr2->quantity;
+			ptr3 = ptr2->next;
+			delete ptr2;
+			ptr2 = ptr3;
+			size--;
+		}
 	}
 	// 将route中除head和rear外的节点都复制到current指针后
+	ptr1 = route.head->next;
 	ptr3 = current;
 	while(ptr1 != route.rear){  
 		quantity = quantity + ptr1->quantity;
@@ -278,6 +288,7 @@ void Route::printRoute(){ // 打印链表
 }
 
 vector<Customer*> Route::getAllCustomer(){  // 得到路径中所有的顾客节点
+	// 返回的customer是用new产生的堆对象，如果内存溢出务必注意此处
 	vector<Customer*> customerSet(size);
 	Customer* ptr = head->next;
 	Customer* ptr2;
@@ -290,10 +301,16 @@ vector<Customer*> Route::getAllCustomer(){  // 得到路径中所有的顾客节点
 	return customerSet;
 }
 
-vector<float> Route::computeReducedCost(){ 
+vector<float> Route::computeReducedCost(float DTpara[], bool artificial){ 
 	// 得到所有顾客节点的移除代价
 	// 值越小表示移除它可以节省更多的代价
 	// mark = true表示需要添加惩罚，mark = false表示不需要添加惩罚
+	float DTH1, DTH2, DTL1, DTL2;
+	float *DTIter = DTpara;
+	DTH1 = *(DTIter++);
+	DTH2 = *(DTIter++);
+	DTL1 = *(DTIter++);
+	DTL2 = *(DTIter++);
 	vector<float> costArr(0);
 	Customer *ptr1 = head;   // 前节点
 	Customer *ptr2, *ptr3;
@@ -303,6 +320,33 @@ vector<float> Route::computeReducedCost(){
 		float temp =  -sqrt(pow(ptr1->x - ptr2->x, 2) + pow(ptr1->y - ptr2->y, 2)) - 
 			sqrt(pow(ptr2->x - ptr3->x, 2) + pow(ptr2->y - ptr3->y, 2)) +
 			sqrt(pow(ptr1->x - ptr3->x, 2) + pow(ptr1->y - ptr3->y, 2));
+		float temp1 = 0;
+		if(artificial == true) {
+			switch(ptr1->priority){
+			case 0:
+				temp1 = 0;
+				break;
+			case 1:
+				temp1 = -DTH2;
+				break;
+			case 2:
+				temp1 = -DTL2;
+				break;
+			}
+		} else {
+			switch(ptr1->priority){
+			case 0:
+				temp1 = 0;
+				break;
+			case 1:
+				temp1 = DTH1;
+				break;
+			case 2:
+				temp1 = DTL1;
+				break;
+			}		
+		}
+		temp += temp1;
 		costArr.push_back(temp);
 		ptr1 = ptr1->next;
 	}
@@ -367,16 +411,23 @@ bool Route::timeWindowJudge(Customer *pre, int pos, Customer item){
 }
 
 void Route::computeInsertCost(Customer item, float &minValue, Customer &customer1, float &secondValue, Customer &customer2,
-							  float noiseAmount, bool noiseAdd, float penaltyPara){
+							  float noiseAmount, bool noiseAdd, float penaltyPara, bool adaptiveNoise){
 	// 计算item节点在路径中的最小插入代价和次小插入代价
 	// 返回其最佳/次佳插入点前面的顾客节点
-	Customer *pre = head;
+	// adaptiveNoise: 是否添加自适应噪声
+	Customer *pre = current;   // 只能插入到未走过的节点前
 	Customer *succ = pre->next;
 	minValue = MAX_FLOAT;
 	secondValue = MAX_FLOAT;
 	customer1.id = -1;
 	customer2.id = -1;
-	for(int i=0; i<=size; i++) {  // 一共有size+1个位置可以考虑插入
+	int startPos = 0;
+	Customer* temp = head;
+	while(temp!= pre) {
+		temp = temp->next;
+		startPos++;
+	}
+	for(int i=startPos; i<=size; i++) {  // 一共有size+1个位置可以考虑插入
 		if(quantity + item.quantity <= capacity){   // 容量约束
 			if(timeWindowJudge(pre, i, item) == true) { // 满足时间窗约束
 				float temp = sqrt(pow(pre->x - item.x, 2) + pow(pre->y - item.y, 2)) +
@@ -384,10 +435,15 @@ void Route::computeInsertCost(Customer item, float &minValue, Customer &customer
 						sqrt(pow(pre->x - succ->x, 2) + pow(pre->y - succ->y, 2));
 				temp += penaltyPara;   // 惩罚
 				if(noiseAdd == true) { // 如果需要添加随机噪声
-					float y = rand()/(RAND_MAX+1.0f);   // y in (0,1)
-					float noise = -noiseAmount + 2*noiseAmount*y;
-					temp = temp + noise;
-					// temp = max(temp+noise, 0.0f);
+					float y, noise;
+					y = rand()/(RAND_MAX + 1.0f);  // y in (0,1)
+					if(adaptiveNoise == true) {   
+						noise = 0 - penaltyPara * y;  // 噪声量和惩罚因子成正比，且符号相反
+						temp = temp + noise;
+					} else {
+						noise = -noiseAmount + 2*noiseAmount*y;
+						temp = max(temp+noise, 0.0f);
+					}
 				}
 				if(temp <= minValue){  // 找到了更小的，更新minValue和secondValue
 					secondValue = minValue;
@@ -406,12 +462,11 @@ void Route::computeInsertCost(Customer item, float &minValue, Customer &customer
 
 void Route::refreshArrivedTime(){   
 	// 更新一下各个节点的到达时刻
-	// 第一个值为0
 	arrivedTime.clear();
-	arrivedTime.push_back(0);
 	Customer* tfront = head;
 	Customer* tcurrent = head->next;
-	float time = 0;
+	float time = tfront->arrivedTime;
+	arrivedTime.push_back(time);
 	while(tcurrent != rear){
 		time = time + sqrt(pow(tfront->x - tcurrent->x, 2) + pow(tfront->y - tcurrent->y, 2));
 		arrivedTime.push_back(time);
@@ -429,16 +484,15 @@ void Route::changeCarIndex(int newIndex){  // 更新车辆编号
 	carIndex = newIndex;
 }
 
-float Route::getLen(vector<float> DTpara, bool artificial){   // 得到路径长度
+float Route::getLen(float DTpara[], bool artificial){   // 得到路径长度
+	// 返回值为实际的路径长度加上惩罚因子
 	// 提取DTpara
-	float DT11, DT12, DT21, DT22, DT31, DT32;
-	vector<float>::iterator DTIter = DTpara.begin();
-	DT11 = *(DTIter++);
-	DT12 = *(DTIter++);
-	DT21 = *(DTIter++);
-	DT22 = *(DTIter++);
-	DT31 = *(DTIter++);
-	DT32 = *(DTIter++);
+	float DTH1, DTH2, DTL1, DTL2;
+	float *DTIter = DTpara;
+	DTH1 = *(DTIter++);
+	DTH2 = *(DTIter++);
+	DTL1 = *(DTIter++);
+	DTL2 = *(DTIter++);
 
 	Customer *ptr1 = head;
 	Customer *ptr2 = head->next;
@@ -451,13 +505,10 @@ float Route::getLen(vector<float> DTpara, bool artificial){   // 得到路径长度
 				temp1 = 0.0f;
 				break;
 			case 1:
-				temp1 = -DT11;
+				temp1 = -DTH1;
 				break;
 			case 2:
-				temp1 = -DT21;
-				break;
-			case 3:
-				temp1 = -DT31;
+				temp1 = -DTL1;
 				break;
 			}
 			len = len + sqrt(pow(ptr1->x - ptr2->x, 2)+pow(ptr1->y - ptr2->y, 2));
@@ -476,16 +527,13 @@ float Route::getLen(vector<float> DTpara, bool artificial){   // 得到路径长度
 				temp1 = 0.0f;
 				break;
 			case 1:
-				temp1 = DT12;
+				temp1 = DTH2;
 				break;
 			case 2:
-				temp1 = DT22;
-				break;
-			case 3:
-				temp1 = DT32;
+				temp1 = DTL2;
 				break;
 			}
-			len = len + (temp1 + temp2)/2 * sqrt(pow(ptr1->x - ptr2->x, 2)+pow(ptr1->y - ptr2->y, 2));
+			len = len + sqrt(pow(ptr1->x - ptr2->x, 2)+pow(ptr1->y - ptr2->y, 2));
 			len += temp1;
 			ptr2 = ptr2->next;
 			ptr1 = ptr1->next;
@@ -496,4 +544,14 @@ float Route::getLen(vector<float> DTpara, bool artificial){   // 得到路径长度
 
 vector<float> Route::getArrivedTime(){     // 得到本车所有节点的arrivedTime
 	return arrivedTime;
+}
+
+Customer Route::getHeadNode() {
+	Customer* newCust = new Customer(*head);
+	return *newCust; 
+}
+
+Customer Route::getRearNode() {
+	Customer* newCust = new Customer(*rear);
+	return *newCust; 
 }

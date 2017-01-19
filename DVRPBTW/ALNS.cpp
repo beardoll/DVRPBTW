@@ -65,8 +65,9 @@ void computeReducedCost(vector<Car*> originCarSet, vector<int> indexsetInRoute, 
 	int i;
 	int carNum = originCarSet.end() - originCarSet.begin();
 	vector<float> reducedCostInRoute(0); // 尚在路径中的各个节点的移除代价
+	float temp[4] = {0, 0, 0, 0};
 	for(i=0; i<carNum; i++){
-		vector<float> tempReducedCost = originCarSet[i]->getRoute().computeReducedCost();
+		vector<float> tempReducedCost = originCarSet[i]->getRoute().computeReducedCost(temp);
 		reducedCostInRoute.insert(reducedCostInRoute.end(), tempReducedCost.begin(), tempReducedCost.end());
 	}
 	for(i=0; i<indexsetInRoute.end()-indexsetInRoute.begin(); i++){
@@ -468,8 +469,9 @@ void computeMax(vector<Customer*> allCustomer, float &maxd, float &maxquantity){
 float getCost(vector<Car*> originCarSet){
 	// 返回originCarSet的路畅
 	float totalCost = 0;
+	float temp[4] = {0, 0, 0, 0};
 	for(int i=0; i<(int)originCarSet.size(); i++){
-		totalCost += originCarSet[i]->getRoute().getLen();
+		totalCost += originCarSet[i]->getRoute().getLen(temp);
 	}
 	return totalCost;
 }

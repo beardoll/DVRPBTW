@@ -4,9 +4,10 @@
 #include<map>
 #include<vector>
 #include "LoadFile.h"
-#include "Algorithm.h"
 #include "OutputFile.h"
 #include "ProbInfo.h"
+#include "SetBench.h"
+#include "Timer.h"
 
 using namespace std;
 
@@ -15,6 +16,8 @@ static const string FILE_NAME = "RC103_100.xml";
 static const string FILE_PATH2 = "C:/Users/cfinsbear/Documents/DVRPBTW/DVRPBTW/ALNS_Result/";
 static const string FILE_NAME2 = FILE_NAME;
 static const int NUM_OF_CUSTOMER = 100;
+static const int timeSlotLen = 60;
+static const int timeSlotNum = 4;
 
 
 int main(){
@@ -23,12 +26,14 @@ int main(){
 	Customer depot;
 	float capacity = 0;
 	lf.getData(allCustomer, depot, capacity);
-	Algorithm ag(allCustomer, depot, capacity);
-	vector<Car*> finalCarSet(0);
-	float finalCost=0;
-	ag.run(finalCarSet, finalCost);
-	OutputFile of(finalCarSet, FILE_PATH2, FILE_NAME2, depot,finalCost);
-	of.exportData();
+	SetBench sb(allCustomer, timeSlotLen, timeSlotNum);
+	vector<Customer*> staticCustomer, dynamicCustomer;
+	sb.construct(staticCustomer, dynamicCustomer);
+	Timer timer(staticCustomer, dynamicCustomer, timeSlotLen);
+	timer.run();
+	//vector<Car*> finalCarSet;
+	//OutputFile of(finalCarSet, FILE_PATH2, FILE_NAME2, depot,finalCost);
+	//of.exportData();
 	system("pause");
 	return 0;
 }

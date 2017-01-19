@@ -42,9 +42,9 @@ void SetBench::construct(vector<Customer*> &staticCustomerSet, vector<Customer*>
 		float t2 = selectSlot * timeSlotLen;      // 时间段的结束
 		float tempt = random(t1, t2);
 		float maxActiveTime = timeSlotNum * timeSlotNum;  // 货车可工作的最晚时间
-		(*iter)->startTime =  min(tempt, maxActiveTime - 2 * (*iter)->serviceTime); // 至少宽限2倍的serviceTime
-		float timeWindowLen = random(2 * (*iter)->serviceTime, maxActiveTime - (*iter)->startTime);  // 时间窗长度
+		(*iter)->startTime =  floor(min(tempt, maxActiveTime - 2 * (*iter)->serviceTime)); // 至少宽限2倍的serviceTime
+		float timeWindowLen = floor(random(2 * (*iter)->serviceTime, maxActiveTime - (*iter)->startTime));  // 时间窗长度
 		(*iter)->endTime = (*iter)->startTime + timeWindowLen;
-		(*iter)->tolerantTime = (*iter)->startTime + random(0.3, 0.6) * timeWindowLen;   // 可容忍的最晚得到回复的时间，为0.3-0.6倍的时间窗长度+startTime
+		(*iter)->tolerantTime = floor((*iter)->startTime + random(0.3, 0.6) * timeWindowLen);   // 可容忍的最晚得到回复的时间，为0.3-0.6倍的时间窗长度+startTime
 	}
 }
