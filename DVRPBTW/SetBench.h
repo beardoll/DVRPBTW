@@ -8,7 +8,7 @@ using namespace std;
 
 class SetBench{  // 该类对benchmark作修改，生成动态顾客数据
 public:
-	SetBench(vector<Customer*> originCustomerSet, int timeSlotLen, int timeSlotNum);  // 构造函数
+	SetBench(vector<Customer*> originCustomerSet, int timeSlotLen, int timeSlotNum, float dynamicism = 0.3);  // 构造函数
 	~SetBench(){};  // 析构函数
 	void constructProbInfo(); // 为probInfo赋值
 	void construct(vector<Customer*> &staticCustomerSet, vector<Customer*> &dynamicCustomerSet);   // 创造顾客样本

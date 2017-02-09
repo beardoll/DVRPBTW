@@ -1,5 +1,6 @@
 #ifndef _Customer_H
 #define _Customer_H
+#include<vector>
 
 // 顾客节点类
 
@@ -17,10 +18,10 @@ struct Customer{
 	int priority;      // 顾客优先级，1表示第一优先级，2表示第二优先级，依次类推
 	Customer *next;    // 指向下一个node节点的指针
 	Customer *front;   // 指向前一个node节点的指针
-	vector<float> timeProb; // 在各个timeSlot下的分布概率
-	bool operator< (Customer &item){
-		return this->id < item.id;
-	}
+	float timeProb[4]; // 在各个timeSlot下的分布概率
+	//bool operator< (Customer &item){
+	//	return this->id < item.id;
+	//}
 	//Customer operator= (Customer &item){
 	//	id = item.id;
 	//	type = item.type;

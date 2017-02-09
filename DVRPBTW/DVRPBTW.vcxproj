@@ -67,6 +67,7 @@
     <ClInclude Include="Customer.h" />
     <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="EventElement.h" />
+    <ClInclude Include="LNS_rel.h" />
     <ClInclude Include="OutputFile.h" />
     <ClInclude Include="LoadFile.h" />
     <ClInclude Include="Matrix.h" />
@@ -74,18 +75,20 @@
     <ClInclude Include="Route.h" />
     <ClInclude Include="Simulator.h" />
     <ClInclude Include="SSALNS.h" />
-    <ClInclude Include="test.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
     <ClInclude Include="SetBench.h" />
+    <ClInclude Include="TxtRecorder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="Dispatcher.cpp" />
+    <ClCompile Include="LNS_rel.cpp" />
     <ClCompile Include="LoadFile.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="OutputFile.cpp" />
+    <ClCompile Include="PublicFunction.cpp" />
     <ClCompile Include="Route.cpp" />
     <ClCompile Include="ALNS.cpp" />
     <ClCompile Include="SetBench.cpp" />
@@ -96,6 +99,7 @@
     <ClCompile Include="tinyxml.cpp" />
     <ClCompile Include="tinyxmlerror.cpp" />
     <ClCompile Include="tinyxmlparser.cpp" />
+    <ClCompile Include="TxtRecorder.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

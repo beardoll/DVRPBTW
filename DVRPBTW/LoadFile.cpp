@@ -33,6 +33,7 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
 			depot.serviceTime = 0;
 			depot.arrivedTime = 0;
 			depot.startTime = 0;
+			depot.priority = 0;
 		} else {  // È¡»õµã
 			customer = new Customer;
 			customer->id = tempINT;        
@@ -41,6 +42,7 @@ bool LoadFile::getData(vector<Customer*> &allCustomer, Customer &depot, float &c
 			tempFLOAT = (float)atof(yElem->GetText());
 			customer->y = tempFLOAT;
 			customer->type = 'P';
+			customer->priority = 0;
 			allCustomer.push_back(customer);
 		}
 	}

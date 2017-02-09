@@ -9,7 +9,7 @@
 class Dispatcher{   // 调度中心类
 public:
 	Dispatcher(vector<Customer*> staticCustomerSet, vector<Customer*> dynamicCustomerSet, Customer depot, float capacity, int timeSlotLen, 
-		int samplingRate = 30);  // 构造函数
+		int timeSlotNum, int samplingRate);  // 构造函数
 	~Dispatcher(){}; // 析构函数
 	EventElement handleNewCustomer(int slotIndex, Customer& newCustomer);  // 处理新顾客到达
 	EventElement handleCarArrived(float time, int carIndex);            // 处理货车到达事件
@@ -18,6 +18,8 @@ public:
 	vector<EventElement> handleNewTimeSlot(int slotIndex); // 新时间段开始 
 	Car& searchCar(int carIndex);   // 根据货车编号搜索货车
 	void carFinishedTask(int carIndex);       // 收车 
+	bool checkFeasible(vector<Car*> carSet);
+	bool checkTimeConstraint();
 private:
 	vector<Customer*> allCustomer;    // 所有的顾客
 	vector<int> dynamicCustomerId;    // 动态到达的顾客的id
@@ -30,6 +32,7 @@ private:
 	Customer depot;
 	float capacity;
 	int timeSlotLen;   // 时间段的长度
+	int timeSlotNum;   // 时间段的个数
 	int samplingRate;    // 采样率
 };
 

@@ -13,29 +13,38 @@ public:
 	~Matrix();   // Îö¹¹º¯Êı
 	Matrix(const Matrix<T> &M);   // ¸´ÖÆ¹¹Ôìº¯Êı
 	Matrix<T>& operator= (const Matrix<T> &M);  // ÖØÔØµÈºÅÔËËã·û
-	void resize(int newrows, int newcols);  // ÖØĞÂ¶¨Òå¾ØÕó´óĞ¡   
+	void resize(int newrows, int newcols);  // ÖØĞÂ¶¨Òå¾ØÕó´óĞ¡ 
+
+	// ĞĞ²Ù×÷
+	T getMaxAtRow(int row, int &pos);  // µÃµ½µÚrowĞĞµÄ×î´óÖµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
+	T getMinAtRow(int row, int &pos);  // µÃµ½µÚrowĞĞµÄ×îĞ¡Öµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
+	Matrix<T> getElemAtRows(int row1, int row2);   // µÃµ½µÚrow1-row2ĞĞÔªËØ
+	void setMatrixAtRow(int row, T* elements);     // ÉèÖÃµÚrowĞĞÔªËØ
+	void addOneRow();  // ¸ø¾ØÕóÔö¼ÓÒ»ĞĞ
+	void printMatrixAtRow(int row);
+
+	// ÁĞ²Ù×÷
+	T getMaxAtCol(int col, int &pos);  // µÃµ½µÚcolÁĞµÄ×î´óÖµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
+	T getMinAtCol(int col, int &pos);  // µÃµ½µÚcolÁĞµÄ×îĞ¡Öµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
+	Matrix<T> getElemAtCols(int col1, int col2);   // µÃµ½µÚcol1-col2ÁĞÔªËØ
+	void setMatrixAtCol(int col, T* elements);     // ÉèÖÃµÚcolÁĞÔªËØ
+	void printMatrixAtCol(int col);
+
+	// ¾ØÕó²Ù×÷
 	void setMatrix(const T* values);  // ÉèÖÃ¾ØÕóÔªËØ
 	T getMaxValue(int &i, int &j); // µÃµ½µ±Ç°¾ØÕóµÄ×î´óÔªËØ¼°ÆäÎ»ÖÃ£¨ÆäÖĞÒ»¸ö£©
-	T getMaxAtRow(int row, int &pos);  // µÃµ½µÚrowĞĞµÄ×î´óÖµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
-	T getMaxAtCol(int col, int &pos);  // µÃµ½µÚcolÁĞµÄ×î´óÖµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
 	T getMinValue(int &i, int &j); // µÃµ½µ±Ç°¾ØÕóµÄ×îĞ¡ÔªËØ¼°ÆäÎ»ÖÃ£¨ÆäÖĞÒ»¸ö£©
-	T getMinAtRow(int row, int &pos);  // µÃµ½µÚrowĞĞµÄ×îĞ¡Öµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
-	T getMinAtCol(int col, int &pos);  // µÃµ½µÚcolÁĞµÄ×îĞ¡Öµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
-	Matrix<T> getElemAtRows(int row1, int row2);   // µÃµ½µÚrow1-row2ĞĞÔªËØ
-	Matrix<T> getElemAtCols(int col1, int col2);   // µÃµ½µÚcol1-col2ÁĞÔªËØ
 	Matrix<T> getElemAtRowsByCols(int row1, int row2, int col1, int col2);  // µÃµ½row1-row2, col1-col2µÄ×Ó¾ØÕó
-	void setMatrixAtRow(int row, T* elements);     // ÉèÖÃµÚrowĞĞÔªËØ 
-	void setMatrixAtCol(int col, T* elements);     // ÉèÖÃµÚcolÁĞÔªËØ 
 	void setValue(int i, int j, const T& newValue); // ĞŞ¸ÄÔªËØ(i,j)ÎªnewValue
 	T getElement(int i, int j);  // µÃµ½ÔªËØ(i,j)
 	void printMatrix();
-	void addOneRow();  // ¸ø¾ØÕóÔö¼ÓÒ»ĞĞ
 private:
 	int rows, cols;    // ¾ØÕóµÄ´óĞ¡
 	T *elements; // ¾ØÕóÔªËØ
 }; // ¾ØÕóÀà
 
 
+//=================== »ù´¡²Ù×÷ ===================//
 template <class T>
 Matrix<T>::Matrix(int rows, int cols):rows(rows), cols(cols){   // ¹¹Ôìº¯Êı
 	assert(rows>=0 && cols>=0);
@@ -80,6 +89,141 @@ void Matrix<T>::resize(int newrows, int newcols){  // ÖØĞÂ¶¨Òå¾ØÕó´óĞ¡
 	cols = newcols;
 }
 
+
+//=================== ĞĞ²Ù×÷ ===================//
+template <class T>
+T Matrix<T>::getMaxAtRow(int row, int &pos){ // µÃµ½µÚrowĞĞµÄ×î´óÖµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
+	assert(row>=0 && row<rows);
+	pos = 0;
+	T maxValue = -numeric_limits<T>::max();  // ¶¨Òå×î´óÖµÎªÎŞÇîĞ¡
+	for(int i=row*cols; i<(row+1)*cols; i++) {
+		if(elements[i] > maxValue) {
+			maxValue = elements[i];
+			pos = i - row*cols;
+		}
+	}
+	return maxValue;
+}  
+
+template <class T>
+T Matrix<T>::getMinAtRow(int row, int &pos){ // µÃµ½µÚrowĞĞµÄ×îĞ¡Öµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
+	assert(row>=0 && row<rows);
+	pos = 0;
+	T minValue = numeric_limits<T>::max();  // ¶¨Òå×îĞ¡ÖµÎªÎŞÇî´ó
+	for(int i=row*cols; i<(row+1)*cols; i++) {
+		if(elements[i] < minValue) {
+			minValue = elements[i];
+			pos = i - row*cols;
+		}
+	}
+	return minValue;
+}  
+
+template <class T> 
+Matrix<T> Matrix<T>::getElemAtRows(int row1, int row2){   // µÃµ½µÚrow1-row2ĞĞÔªËØ
+	assert(row1>=0 && row1<rows && row2>=0 && row2<rows && row1<=row2);
+	Matrix<T> tempMat(row2-row1+1, cols);
+	for(int i=row1; i<=row2; i++){
+		for(int j=0; j<=cols; j++){
+			tempMat.setValue(i-row1, j, elements[i*cols+j]);
+		}
+	}
+	return tempMat;
+}
+
+template <class T>
+void Matrix<T>::setMatrixAtRow(int row, T* elements){     // ÉèÖÃµÚrowĞĞÔªËØ
+	for(int j=0; j<cols; j++){
+		this->setValue(row, j, elements[j]);
+	}
+}
+
+template <class T>
+void Matrix<T>::printMatrixAtRow(int row){
+	assert(row>=0 && row < rows);
+	int startPoint = row * cols;
+	int endPoint = (row+1) * cols;
+	for(int i=startPoint; i<endPoint; i++) {
+		cout << *elements[i] << endl;
+	}
+}
+
+template <class T>
+void Matrix<T>::addOneRow(){  
+	// ¸ø¾ØÕóÔö¼ÓÒ»ĞĞ
+	// Í¬Ê±±£ÁôÔ­À´µÄÊı¾İ
+	T* newElements = new T[rows*cols + cols];
+	for(int i=0; i<rows*cols; i++){
+		newElements[i] = elements[i];
+	}
+	delete [] elements;
+	elements = newElements;
+	rows++;
+}
+
+
+//=================== ÁĞ²Ù×÷ ===================//
+template <class T>
+T Matrix<T>::getMaxAtCol(int col, int &pos){ // µÃµ½µÚcolÁĞµÄ×î´óÖµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
+	assert(col>=0 && cols<cols);
+	T maxValue = -numeric_limits<T>::max();  // ¶¨Òå×î´óÖµÎªÎŞÇîĞ¡
+	pos = 0;
+	int tpos = 0;
+	for(int i=0; i<rows; i++){
+		tpos = i*cols+col;    // ¶¨Î»µ±Ç°ÔªËØ
+		if(elements[tpos] > maxValue) {
+			maxValue = elements[tpos];
+			pos = i;
+		}
+	}
+	return maxValue;
+}
+
+template <class T>
+T Matrix<T>::getMinAtCol(int col, int &pos){ // µÃµ½µÚcolÁĞµÄ×îĞ¡Öµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
+	assert(col>=0 && col<cols);
+	pos = 0;
+	T minValue = numeric_limits<T>::max();  // ¶¨Òå×îĞ¡ÖµÎªÎŞÇî´ó
+	int tpos;
+	for(int i=0; i<rows; i++){
+		tpos = i*cols+col;    // ¶¨Î»µ±Ç°ÔªËØ
+		if(elements[tpos] < minValue) {
+			minValue = elements[tpos];
+			pos = i;
+		}
+	}
+	return minValue;
+}
+
+template <class T>
+Matrix<T> Matrix<T>::getElemAtCols(int col1, int col2){  // µÃµ½µÚcols1-col2ÁĞÔªËØ
+	assert(col1>=0 && col1<cols && col2>=0 && col2<cols && col1<=col2);
+	Matrix<T> tempMat(rows, col2-col1+1);
+	for(int i=0; i<rows; i++){
+		for(int j=col1; j<=col2; j++){
+			tempMat.setValue(i, j-col1, elements[i*cols+j]);
+		}
+	}
+	return tempMat;
+}
+
+template <class T>
+void Matrix<T>::setMatrixAtCol(int col, T* elements){     // ÉèÖÃµÚcolÁĞÔªËØ
+	for(int i=0; i<rows; i++){
+		this->setValue(i, col, elements[i]);
+	}
+}
+
+template <class T>
+void Matrix<T>::printMatrixAtCol(int col){
+	assert(col>=0 && col < cols);
+	for(int i=0; i<rows; i++) {
+		cout << getElement(i, col) << endl;
+	}
+}
+
+
+//=================== ¾ØÕó²Ù×÷ ===================//
 template <class T>
 void Matrix<T>:: setMatrix(const T* values){
 	for(int i=0; i<rows*cols; i++){
@@ -97,6 +241,8 @@ void Matrix<T>::setValue(int i, int j, const T& value){
 template <class T>
 T Matrix<T>::getMaxValue(int &i, int &j){ // µÃµ½µ±Ç°¾ØÕóµÄ×î´óÔªËØ¼°ÆäÎ»ÖÃ£¨ÆäÖĞÒ»¸ö£©
 	T maxValue = -numeric_limits<T>::max();  // ¶¨Òå×î´óÖµÎªÎŞÇîĞ¡
+	i = 0;
+	j = 0;
 	int pos;
 	for(int k=0; k<rows; k++) {
 		for(int l=0; l<cols; l++){
@@ -112,36 +258,10 @@ T Matrix<T>::getMaxValue(int &i, int &j){ // µÃµ½µ±Ç°¾ØÕóµÄ×î´óÔªËØ¼°ÆäÎ»ÖÃ£¨ÆäÖ
 }
 
 template <class T>
-T Matrix<T>::getMaxAtRow(int row, int &pos){ // µÃµ½µÚrowĞĞµÄ×î´óÖµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
-	assert(row>=0 && row<rows);
-	T maxValue = -numeric_limits<T>::max();  // ¶¨Òå×î´óÖµÎªÎŞÇîĞ¡
-	for(int i=row*cols; i<(row+1)*cols; i++) {
-		if(elements[i] > maxValue) {
-			maxValue = elements[i];
-			pos = i - row*cols;
-		}
-	}
-	return maxValue;
-}  
-
-template <class T>
-T Matrix<T>::getMaxAtCol(int col, int &pos){ // µÃµ½µÚcolÁĞµÄ×î´óÖµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
-	assert(col>=0 && cols<cols);
-	T maxValue = -numeric_limits<T>::max();  // ¶¨Òå×î´óÖµÎªÎŞÇîĞ¡
-	int tpos;
-	for(int i=0; i<rows; i++){
-		tpos = i*cols+col;    // ¶¨Î»µ±Ç°ÔªËØ
-		if(elements[tpos] > maxValue) {
-			maxValue = elements[tpos];
-			pos = i;
-		}
-	}
-	return maxValue;
-}
-
-template <class T>
 T Matrix<T>::getMinValue(int &i, int &j){ // µÃµ½µ±Ç°¾ØÕóµÄ×îĞ¡¼°ÆäÎ»ÖÃ£¨ÆäÖĞÒ»¸ö£©
 	T minValue = numeric_limits<T>::max();  // ¶¨Òå×îĞ¡ÖµÎªÎŞÇî´ó
+	i = 0;
+	j = 0;
 	int pos;
 	for(int k=0; k<rows; k++) {
 		for(int l=0; l<cols; l++){
@@ -157,58 +277,6 @@ T Matrix<T>::getMinValue(int &i, int &j){ // µÃµ½µ±Ç°¾ØÕóµÄ×îĞ¡¼°ÆäÎ»ÖÃ£¨ÆäÖĞÒ»¸
 }
 
 template <class T>
-T Matrix<T>::getMinAtRow(int row, int &pos){ // µÃµ½µÚrowĞĞµÄ×îĞ¡Öµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
-	assert(row>=0 && row<rows);
-	T minValue = numeric_limits<T>::max();  // ¶¨Òå×îĞ¡ÖµÎªÎŞÇî´ó
-	for(int i=row*cols; i<(row+1)*cols; i++) {
-		if(elements[i] < minValue) {
-			minValue = elements[i];
-			pos = i - row*cols;
-		}
-	}
-	return minValue;
-}  
-
-template <class T>
-T Matrix<T>::getMinAtCol(int col, int &pos){ // µÃµ½µÚcolÁĞµÄ×îĞ¡Öµ£¬·µ»ØÆäÎ»ÖÃposÒÔ¼°Öµ
-	assert(col>=0 && col<cols);
-	T minValue = numeric_limits<T>::max();  // ¶¨Òå×îĞ¡ÖµÎªÎŞÇî´ó
-	int tpos;
-	for(int i=0; i<rows; i++){
-		tpos = i*cols+col;    // ¶¨Î»µ±Ç°ÔªËØ
-		if(elements[tpos] < minValue) {
-			minValue = elements[tpos];
-			pos = i;
-		}
-	}
-	return minValue;
-}
-
-template <class T> 
-Matrix<T> Matrix<T>::getElemAtRows(int row1, int row2){   // µÃµ½µÚrow1-row2ĞĞÔªËØ
-	assert(row1>=0 && row1<rows && row2>=0 && row2<rows && row1<=row2);
-	Matrix<T> tempMat(row2-row1+1, cols);
-	for(int i=row1; i<=row2; i++){
-		for(int j=0; j<=cols; j++){
-			tempMat.setValue(i-row1, j, elements[i*cols+j]);
-		}
-	}
-	return tempMat;
-}
-
-template <class T>
-Matrix<T> Matrix<T>::getElemAtCols(int col1, int col2){  // µÃµ½µÚcols1-col2ÁĞÔªËØ
-	assert(col1>=0 && col1<cols && col2>=0 && col2<cols && col1<=col2);
-	Matrix<T> tempMat(rows, col2-col1+1);
-	for(int i=0; i<rows; i++){
-		for(int j=col1; j<=col2; j++){
-			tempMat.setValue(i, j-col1, elements[i*cols+j]);
-		}
-	}
-	return tempMat;
-}
-
-template <class T>
 Matrix<T> Matrix<T>::getElemAtRowsByCols(int row1, int row2, int col1, int col2){  // µÃµ½row1-row2, col1-col2µÄ×Ó¾ØÕó
 	assert(row1>=0 && row1<rows && row2>=0 && row2<rows && row1<=row2);
 	assert(col1>=0 && col1<cols && col2>=0 && col2<cols && col1<=col2);
@@ -219,20 +287,6 @@ Matrix<T> Matrix<T>::getElemAtRowsByCols(int row1, int row2, int col1, int col2)
 		}
 	}
 	return tempMat;
-}
-
-template <class T>
-void Matrix<T>::setMatrixAtRow(int row, T* elements){     // ÉèÖÃµÚrowĞĞÔªËØ
-	for(int j=0; j<cols; j++){
-		this->setValue(row, j, elements[j]);
-	}
-}
-
-template <class T>
-void Matrix<T>::setMatrixAtCol(int col, T* elements){     // ÉèÖÃµÚcolÁĞÔªËØ
-	for(int i=0; i<rows; i++){
-		this->setValue(i, col, elements[i]);
-	}
 }
 
 template <class T>
@@ -251,19 +305,6 @@ void Matrix<T>::printMatrix(){
 		cout << endl;
 	}
 	cout << endl;
-}
-
-template <class T>
-void Matrix<T>::addOneRow(){  
-	// ¸ø¾ØÕóÔö¼ÓÒ»ĞĞ
-	// Í¬Ê±±£ÁôÔ­À´µÄÊı¾İ
-	T* newElements = new T[rows*cols + cols];
-	for(int i=0; i<rows*cols; i++){
-		newElements[i] = elements[i];
-	}
-	delete [] elements;
-	elements = newElements;
-	rows++;
 }
 
 #endif

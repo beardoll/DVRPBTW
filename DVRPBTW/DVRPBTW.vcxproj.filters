@@ -36,9 +36,6 @@
     <ClInclude Include="Timer.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="test.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="tinystr.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -66,15 +63,18 @@
     <ClInclude Include="ALNS.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="LNS_rel.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TxtRecorder.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Route.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Car.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="LoadFile.cpp">
@@ -111,6 +111,18 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ALNS.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PublicFunction.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LNS_rel.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TxtRecorder.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

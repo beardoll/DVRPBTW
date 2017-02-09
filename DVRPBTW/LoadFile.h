@@ -2,8 +2,6 @@
 #define _LOADFILES_H
 
 #include "Customer.h"
-#include "tinystr.h"
-#include "tinyxml.h"
 #include<string>
 #include<vector>
 

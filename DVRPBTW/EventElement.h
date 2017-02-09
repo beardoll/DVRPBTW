@@ -19,19 +19,19 @@ struct EventElement{
 	EventType eventType;  
 	int carIndex;      // 事件关联的车辆编号
 	int customerId;    // 事件关联的顾客节点id
-	EventElement(float time, EventType eventType, int carIndex, int customerId){ // 构造函数
+	EventElement(const float time = -1, const EventType eventType = carArrived, const int carIndex = -1, const int customerId = -1){ // 构造函数
 		this->time = time;
 		this->eventType = eventType;
 		this->carIndex = carIndex;
 		this->customerId = customerId;
 	}  
-	EventElement(EventElement &item){  // 复制构造函数
+	EventElement(const EventElement &item){  // 复制构造函数
 		this->time = item.time;
 		this->eventType = item.eventType;
 		this->carIndex = item.carIndex;
 		this->customerId = item.customerId;
 	}
-	EventElement& operator= (EventElement& item) {
+	EventElement& operator= (const EventElement& item) {
 		this->time = item.time;
 		this->carIndex = item.carIndex;
 		this->eventType = item.eventType;

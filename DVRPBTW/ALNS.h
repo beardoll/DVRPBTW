@@ -5,7 +5,7 @@
 
 class ALNS{  // À„∑®¿‡
 public:
-	ALNS(vector<Customer*> allCustomer, Customer depot, float capacity):allCustomer(allCustomer), depot(depot), capacity(capacity){};
+	ALNS(vector<Customer*> allCustomer, Customer depot, float capacity);
 	~ALNS(){};
 	void shawRemoval(vector<Car*> &originCarSet, vector<Customer*> &removedCustomer, int q, int p, float maxd, float maxt, float maxquantity);
 	void randomRemoval(vector<Car*> &originCarSet, vector<Customer*> &removedCustomer, int q);

@@ -8,7 +8,7 @@
 
 class Timer{  // 事件触发器
 public:
-	Timer(vector<Customer*> staticCustomerSet, vector<Customer*> dynamicCustomerSet, int timeSlotLen);   // 构造函数，输入参数为所有顾客，以及各时间段开始值
+	Timer(vector<Customer*> staticCustomerSet, vector<Customer*> dynamicCustomerSet, int timeSlotLen, int timeSlotNum, float capacity, Customer depot);   // 构造函数，输入参数为所有顾客，以及各时间段开始值
 	~Timer(){};  // 析构函数
 	EventElement& pop();    // 把事件表的第一个元素弹出来
 	void addEventElement(EventElement &newEvent);     // 往事件表中增加事件
@@ -22,6 +22,7 @@ private:
 	float capacity;
 	Customer depot;
 	int timeSlotLen;    // 时间段的长度
+	int timeSlotNum;    // 时间段的个数
 };
 
 #endif

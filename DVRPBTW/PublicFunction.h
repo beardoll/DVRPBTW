@@ -1,82 +1,74 @@
 #ifndef _PUBLICFUNCTION_H
 #define _PUBLICFUNCTION_H
-#include<cstdlib>
-#include<iostream>
-#include<algorithm>
-#include<vector>
-#include<numeric>
+
+#include "Car.h"
 
 using namespace std;
 
-float random(float start, float end){
-	// 产生start到end之间的随机数
-	return start+(end-start)*rand()/(RAND_MAX+1.0);
-}
-
-template<class T1, class T2>
-bool ascendSort(pair<T1, T2> x, pair<T1, T2> y){   
+float random(float start, float end);
+template<class T1, class T2> bool ascendSort(pair<T1, T2> x, pair<T1, T2> y) {
 	// 递增排序
 	// 第二个元素包含该元素在原序列中的位置
 	return x.first < y.first;
 }
-
-template<class T1, class T2>
-bool descendSort(pair<T1, T2> x, pair<T1, T2> y){
+template<class T1, class T2>  bool descendSort(pair<T1, T2> x, pair<T1, T2> y) {
 	// 递减排序
 	// 第二个元素包含该元素在原序列中的位置
-	return x.first > y.second;
+	return x.first > y.first;
+}
+vector<float> randomVec(int num);
+vector<int> getRandom(int lb, int ub, int m, vector<int> &restData);
+	// 获得范围从lb到ub的m个不重复的数字
+	// 剩余数字置于restData中
+int roulette(vector<float> probability);
+	// 根据probability，应用轮盘算法得到这次随机仿真出现的离散值
+	// 内嵌将probability进行归一化的函数
+int roulette(float *probability, int num);
+	// 根据probability，应用轮盘算法得到这次随机仿真出现的离散值
+	// 传入的是概率数组的头指针以及总共的概率分布数量
+	// 内嵌将probability进行归一化的函数
+inline void withdrawPlan(vector<Car*> &Plan);    // 销毁计划
+inline vector<Car*> copyPlan(vector<Car*> Plan); // 复制计划
+inline void deleteCustomerSet(vector<Customer*> &customerSet);            // 删除customerSet
+inline vector<Customer*> copyCustomerSet(vector<Customer*> customerSet);  // 复制customerSet
+
+
+// 模板函数和内联函数的实现
+inline void withdrawPlan(vector<Car*> &Plan){  
+	// 销毁计划
+	vector<Car*>::iterator carIter;
+	for(carIter = Plan.begin(); carIter < Plan.end(); carIter++) {
+		delete(*carIter);
+	}
+	Plan.resize(0);
 }
 
-vector<float> randomVec(int num){  // 产生num个随机数，它们的和为1
-	float rest = 1;  // 初始余量为1
-	vector<float> output(0);
-	for(int i=0; i<num; i++) {
-		float temp = random(0, rest); // 产生随机数
-		output.push_back(temp);
-		rest -= temp;
+inline vector<Car*> copyPlan(vector<Car*> Plan) {
+	// 复制计划
+	vector<Car*>::iterator carIter;
+	vector<Car*> outputPlan;
+	for(carIter = Plan.begin(); carIter < Plan.end(); carIter++) {
+		Car* newCar = new Car(**carIter);
+		outputPlan.push_back(newCar);
 	}
-	return output;
+	return outputPlan;
 }
 
-vector<int> getRandom(int lb, int ub, int m, vector<int> &restData){
-	// 产生m个不同的，范围为[lb, ub)的随机数
-	// restData, 除了返回值外剩余的数值
-	restData.resize(0);
-	for(int i=0; i<ub-lb; i++) {
-		restData.push_back(i+lb);
+inline void deleteCustomerSet(vector<Customer*> &customerSet){   // 删除CustomerSet
+	vector<Customer*>::iterator iter;
+	for(iter = customerSet.begin(); iter < customerSet.end(); iter++) {
+		delete(*iter);
 	}
-	int total = m;
-	vector<int> outputData(0);
-	for(int j=0; j<m; j++) {
-		vector<int>::iterator iter = restData.begin();
-		int num = rand() % total; // 0-total-1
-		iter += num;
-		int temp = *(iter);
-		outputData.push_back(num);
-		restData.erase(iter);
-		total--;
-	}
-	return outputData;
 }
 
-int roulette(vector<float> probability) {
-	// 轮盘算法
-	// 随机选出一个整数k (from 0 to |probability|)。
-	vector<float>::iterator floatIter;
-	float sumation1 = accumulate(probability.begin(), probability.end(), 0); // 求和
-	for(floatIter = probability.begin(); floatIter < probability.end(); floatIter++) {
-		*floatIter /= sumation1;  // 归一化
+inline vector<Customer*> copyCustomerSet(vector<Customer*> customerSet){  // 复制customerSet
+	vector<Customer*> outputCust;
+	vector<Customer*>::iterator custIter;
+	for(custIter = customerSet.begin(); custIter < customerSet.end(); custIter++) {
+		Customer *newCust = new Customer(**custIter);
+		outputCust.push_back(newCust);
 	}
-	int totalNum = probability.end() - probability.begin();  // 总数目
-	int k = 0;
-	float sumation = 0;
-	float randFloat = rand()/(RAND_MAX + 1.0f);
-	floatIter = probability.begin();
-	while((sumation < randFloat) && (floatIter < probability.end())) {
-		k++;
-		sumation += *(floatIter++);
-	}
-	k = max(k-1, 0); // randFloat = 0 时 k-1 < 0
-	return k;
+	return outputCust;
 }
+
 #endif
